@@ -33,8 +33,10 @@ const Register = () => {
     <div className="auth-container">
       <div className="auth-card fade-in">
         <div className="auth-header">
-          <Link to="/" className="logo" style={{ fontSize: '2rem' }}>CRUST<span>.</span></Link>
-          <h1 className="auth-title">Create Account</h1>
+          <Link to="/" className="logo" style={{ fontSize: '2rem', color: 'var(--black)', justifyContent: 'center' }}>
+            CRUST<span>.</span><span className="logo-tm" style={{ color: 'var(--black)' }}>TM</span>
+          </Link>
+          <h1 className="auth-title">CREATE ACCOUNT</h1>
           <p className="auth-subtitle">Join CRUST today</p>
         </div>
 
@@ -89,7 +91,7 @@ const Register = () => {
           </div>
 
           <button type="submit" className="btn btn-primary btn-lg" style={{ width: '100%' }} disabled={loading}>
-            {loading ? 'Creating account...' : 'Create Account'}
+            {loading ? 'CREATING ACCOUNT...' : 'CREATE ACCOUNT'}
           </button>
         </form>
 

@@ -28,8 +28,10 @@ const Login = () => {
     <div className="auth-container">
       <div className="auth-card fade-in">
         <div className="auth-header">
-          <Link to="/" className="logo" style={{ fontSize: '2rem' }}>CRUST<span>.</span></Link>
-          <h1 className="auth-title">Welcome Back</h1>
+          <Link to="/" className="logo" style={{ fontSize: '2rem', color: 'var(--black)', justifyContent: 'center' }}>
+            CRUST<span>.</span><span className="logo-tm" style={{ color: 'var(--black)' }}>TM</span>
+          </Link>
+          <h1 className="auth-title">WELCOME BACK</h1>
           <p className="auth-subtitle">Sign in to your account</p>
         </div>
 
@@ -59,13 +61,13 @@ const Login = () => {
           </div>
 
           <div style={{ textAlign: 'right', marginBottom: '1.5rem' }}>
-            <Link to="/forgot-password" style={{ color: 'var(--primary)', fontSize: '0.9rem', textDecoration: 'none' }}>
+            <Link to="/forgot-password" style={{ color: 'var(--red)', fontSize: '0.85rem', textDecoration: 'none', fontWeight: 700, fontFamily: 'var(--font-display)' }}>
               Forgot password?
             </Link>
           </div>
 
           <button type="submit" className="btn btn-primary btn-lg" style={{ width: '100%' }} disabled={loading}>
-            {loading ? 'Signing in...' : 'Sign In'}
+            {loading ? 'SIGNING IN...' : 'SIGN IN'}
           </button>
         </form>
 

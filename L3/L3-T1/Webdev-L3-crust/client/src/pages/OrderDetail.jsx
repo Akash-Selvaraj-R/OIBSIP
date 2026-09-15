@@ -44,15 +44,20 @@ const OrderDetail = () => {
   };
 
   if (loading) {
-    return <div className="loading-container"><div className="spinner"></div></div>;
+    return (
+      <div className="loading-container">
+        <div className="spinner"></div>
+        <div className="loading-text">Loading order...</div>
+      </div>
+    );
   }
 
   if (!order) {
     return (
       <div className="page-container">
         <div className="empty-state">
-          <h3 className="empty-title">Order not found</h3>
-          <Link to="/orders" className="btn btn-primary" style={{ marginTop: '1rem' }}>Back to Orders</Link>
+          <h3 className="empty-title">ORDER NOT FOUND</h3>
+          <Link to="/orders" className="btn btn-primary" style={{ marginTop: '1rem' }}>← BACK TO ORDERS</Link>
         </div>
       </div>
     );
@@ -61,12 +66,15 @@ const OrderDetail = () => {
   return (
     <div className="page-container">
       <div className="builder-container">
-        <Link to="/orders" style={{ color: 'var(--text-secondary)', textDecoration: 'none', marginBottom: '1rem', display: 'inline-block' }}>
-          ← Back to Orders
+        <Link to="/orders" style={{ fontFamily: 'var(--font-display)', fontWeight: 700, fontSize: '0.8rem', letterSpacing: '0.06em', textTransform: 'uppercase', color: 'var(--text-secondary)', textDecoration: 'none', marginBottom: '1rem', display: 'inline-block' }}>
+          ← BACK TO ORDERS
         </Link>
 
         <div className="page-header">
-          <h1 className="page-title">Order #{order._id.slice(-8).toUpperCase()}</h1>
+          <div className="brand-stamp red" style={{ marginBottom: '1rem' }}>
+            {order.status.toUpperCase()}
+          </div>
+          <h1 className="page-title">ORDER<br />#{order._id.slice(-8).toUpperCase()}</h1>
           <p className="page-subtitle">{new Date(order.createdAt).toLocaleString()}</p>
         </div>
 
@@ -82,7 +90,9 @@ const OrderDetail = () => {
         </div>
 
         <div className="summary-card fade-in" style={{ marginTop: '2rem' }}>
-          <h3 style={{ marginBottom: '1.5rem', fontSize: '1.25rem' }}>Order Details</h3>
+          <h3 style={{ fontFamily: 'var(--font-display)', fontWeight: 700, fontSize: '1rem', letterSpacing: '0.06em', textTransform: 'uppercase', marginBottom: '1.5rem' }}>
+            ORDER DETAILS
+          </h3>
 
           {order.customPizza && (
             <>
@@ -99,7 +109,7 @@ const OrderDetail = () => {
                 <span className="summary-value">{order.customPizza.cheese}</span>
               </div>
               <div className="summary-row">
-                <span className="summary-label">Vegetables</span>
+                <span className="summary-label">Toppings</span>
                 <span className="summary-value">{order.customPizza.vegetables?.join(', ')}</span>
               </div>
             </>
@@ -107,8 +117,8 @@ const OrderDetail = () => {
 
           <div className="summary-row">
             <span className="summary-label">Payment</span>
-            <span className="summary-value" style={{ color: order.paymentStatus === 'completed' ? 'var(--success)' : 'var(--warning)' }}>
-              {order.paymentStatus === 'completed' ? 'Paid' : 'Pending'}
+            <span className={`brand-stamp ${order.paymentStatus === 'completed' ? 'green' : 'yellow'}`}>
+              {order.paymentStatus === 'completed' ? 'PAID' : 'PENDING'}
             </span>
           </div>
 
@@ -120,7 +130,7 @@ const OrderDetail = () => {
           )}
 
           <div className="summary-total">
-            <span>Total Paid</span>
+            <span>TOTAL PAID</span>
             <span className="total-price">₹{order.amount}</span>
           </div>
         </div>

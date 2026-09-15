@@ -47,7 +47,7 @@
     const sections = document.querySelectorAll('section[id]');
 
     function setActiveLink() {
-        const scrollY = window.scrollY + 100;
+        const scrollY = window.scrollY + 120;
 
         sections.forEach(section => {
             const top = section.offsetTop;
@@ -57,7 +57,8 @@
             if (scrollY >= top && scrollY < top + height) {
                 navLinks.forEach(link => {
                     link.classList.remove('active');
-                    if (link.getAttribute('href') === '#' + id) {
+                    const href = link.getAttribute('href');
+                    if (href === '#' + id) {
                         link.classList.add('active');
                     }
                 });
@@ -67,14 +68,5 @@
 
     window.addEventListener('scroll', setActiveLink, { passive: true });
     setActiveLink();
-
-    // Header shadow on scroll
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 10) {
-            header.style.boxShadow = '0 2px 20px rgba(0,0,0,0.3)';
-        } else {
-            header.style.boxShadow = 'none';
-        }
-    }, { passive: true });
 
 })();

@@ -3,16 +3,67 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TASKFORGE — Personal Task Command Center</title>
+    <title>TASKFORGE — Productivity System</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!-- Geometric Decorations -->
+    <div class="geo geo-circle" aria-hidden="true"></div>
+    <div class="geo geo-square" aria-hidden="true"></div>
+    <div class="geo geo-line-h" aria-hidden="true"></div>
+    <div class="geo geo-line-v" aria-hidden="true"></div>
+    <div class="geo geo-block" aria-hidden="true"></div>
+
     <div class="container">
+        <!-- Header -->
         <header class="header">
-            <h1 class="logo">TASKFORGE</h1>
-            <p class="tagline">Personal Task Command Center</p>
+            <div class="header-top">
+                <div class="header-brand">
+                    <h1 class="logo">
+                        <span class="logo-task">TASK</span>
+                        <span class="logo-forge">FORGE</span>
+                    </h1>
+                    <div class="header-rule"></div>
+                    <p class="tagline">PRODUCTIVITY SYSTEM / 01</p>
+                </div>
+                <nav class="header-nav" aria-label="Task filter navigation">
+                    <button class="nav-btn active" data-filter="all">ALL</button>
+                    <button class="nav-btn" data-filter="active">ACTIVE</button>
+                    <button class="nav-btn" data-filter="completed">DONE</button>
+                </nav>
+            </div>
         </header>
 
+        <!-- Dashboard -->
+        <section class="dashboard" aria-label="Task statistics">
+            <div class="dashboard-title">
+                <span class="dash-label">YOUR DAILY WORKSPACE</span>
+            </div>
+            <div class="stat-grid">
+                <div class="stat-block">
+                    <span class="stat-label">TOTAL</span>
+                    <div class="stat-rule"></div>
+                    <span id="stat-total" class="stat-number">0</span>
+                </div>
+                <div class="stat-block stat-active">
+                    <span class="stat-label">ACTIVE</span>
+                    <div class="stat-rule"></div>
+                    <span id="stat-active" class="stat-number">0</span>
+                </div>
+                <div class="stat-block stat-done">
+                    <span class="stat-label">DONE</span>
+                    <div class="stat-rule"></div>
+                    <span id="stat-done" class="stat-number">0</span>
+                </div>
+            </div>
+        </section>
+
+        <div class="divider"></div>
+
+        <!-- Task Input -->
         <section class="input-section" aria-label="Add a new task">
             <form id="task-form" class="task-form">
                 <label for="task-input" class="visually-hidden">What needs to be done?</label>
@@ -20,39 +71,66 @@
                     type="text"
                     id="task-input"
                     class="task-input"
-                    placeholder="What needs to be done?"
+                    placeholder="WHAT NEEDS TO BE DONE?"
                     autocomplete="off"
                     required
                 >
-                <button type="submit" class="btn btn-add" aria-label="Add task">Add Task</button>
+                <button type="submit" class="btn btn-add" aria-label="Add task">+ ADD</button>
             </form>
         </section>
 
         <div class="divider"></div>
 
-        <section class="tasks-section" aria-label="Pending tasks">
+        <!-- Filter Strip -->
+        <div class="filter-strip" role="tablist" aria-label="Task filter">
+            <button class="filter-btn active" data-filter="all" role="tab" aria-selected="true">ALL</button>
+            <button class="filter-btn" data-filter="active" role="tab" aria-selected="false">ACTIVE</button>
+            <button class="filter-btn" data-filter="completed" role="tab" aria-selected="false">COMPLETED</button>
+        </div>
+
+        <div class="divider"></div>
+
+        <!-- Pending Tasks -->
+        <section class="tasks-section" id="pending-section" aria-label="Pending tasks">
             <div class="section-header">
                 <h2 class="section-title">PENDING</h2>
-                <span id="pending-count" class="task-count">0 tasks</span>
+                <span id="pending-count" class="task-count">0 TASKS</span>
             </div>
             <ul id="pending-list" class="task-list" aria-live="polite"></ul>
             <div id="pending-empty" class="empty-state">
-                <p>No pending tasks. You're all caught up.</p>
+                <div class="empty-geo" aria-hidden="true">
+                    <div class="empty-circle"></div>
+                </div>
+                <p class="empty-title">NO TASKS</p>
+                <p class="empty-sub">YOUR WORKSPACE IS CLEAR.</p>
             </div>
         </section>
 
         <div class="divider"></div>
 
-        <section class="tasks-section" aria-label="Completed tasks">
+        <!-- Completed Tasks -->
+        <section class="tasks-section" id="completed-section" aria-label="Completed tasks">
             <div class="section-header">
                 <h2 class="section-title">COMPLETED</h2>
-                <span id="completed-count" class="task-count">0 tasks</span>
+                <span id="completed-count" class="task-count">0 TASKS</span>
             </div>
             <ul id="completed-list" class="task-list" aria-live="polite"></ul>
             <div id="completed-empty" class="empty-state">
-                <p>No completed tasks yet.</p>
+                <div class="empty-geo" aria-hidden="true">
+                    <div class="empty-circle"></div>
+                </div>
+                <p class="empty-title">NO COMPLETED TASKS</p>
+                <p class="empty-sub">YOUR WORKSPACE IS CLEAR.</p>
             </div>
         </section>
+
+        <div class="divider"></div>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-line"></div>
+            <span class="footer-text">TASKFORGE &mdash; FORM FOLLOWS FUNCTION</span>
+        </footer>
     </div>
 
     <script src="script.js"></script>

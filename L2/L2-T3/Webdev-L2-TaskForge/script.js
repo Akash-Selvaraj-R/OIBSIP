@@ -4,8 +4,9 @@
     const STORAGE_KEY = 'taskforge_tasks';
 
     let tasks = [];
+    let currentFilter = 'all';
 
-    // DOM
+    // DOM — Original
     const taskForm = document.getElementById('task-form');
     const taskInput = document.getElementById('task-input');
     const pendingList = document.getElementById('pending-list');
@@ -14,6 +15,17 @@
     const completedCount = document.getElementById('completed-count');
     const pendingEmpty = document.getElementById('pending-empty');
     const completedEmpty = document.getElementById('completed-empty');
+
+    // DOM — Dashboard
+    const statTotal = document.getElementById('stat-total');
+    const statActive = document.getElementById('stat-active');
+    const statDone = document.getElementById('stat-done');
+
+    // DOM — Filter
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const navBtns = document.querySelectorAll('.nav-btn');
+    const pendingSection = document.getElementById('pending-section');
+    const completedSection = document.getElementById('completed-section');
 
     // --- Utilities ---
     function generateId() {
@@ -95,13 +107,57 @@
         return true;
     }
 
+    // --- Filter ---
+    function setFilter(filter) {
+        currentFilter = filter;
+
+        filterBtns.forEach(btn => {
+            const isActive = btn.dataset.filter === filter;
+            btn.classList.toggle('active', isActive);
+            btn.setAttribute('aria-selected', isActive);
+        });
+
+        navBtns.forEach(btn => {
+            btn.classList.toggle('active', btn.dataset.filter === filter);
+        });
+
+        applyFilter();
+    }
+
+    function applyFilter() {
+        const pending = tasks.filter(t => !t.completed).length;
+        const completed = tasks.filter(t => t.completed).length;
+
+        if (currentFilter === 'all') {
+            pendingSection.classList.remove('hidden-filter');
+            completedSection.classList.remove('hidden-filter');
+        } else if (currentFilter === 'active') {
+            pendingSection.classList.remove('hidden-filter');
+            completedSection.classList.add('hidden-filter');
+        } else if (currentFilter === 'completed') {
+            pendingSection.classList.add('hidden-filter');
+            completedSection.classList.remove('hidden-filter');
+        }
+    }
+
+    // --- Dashboard ---
+    function updateDashboard() {
+        const pending = tasks.filter(t => !t.completed).length;
+        const completed = tasks.filter(t => t.completed).length;
+        const total = tasks.length;
+
+        statTotal.textContent = total;
+        statActive.textContent = pending;
+        statDone.textContent = completed;
+    }
+
     // --- Rendering ---
     function updateCounts() {
         const pending = tasks.filter(t => !t.completed).length;
         const completed = tasks.filter(t => t.completed).length;
 
-        pendingCount.textContent = `${pending} ${pending === 1 ? 'task' : 'tasks'}`;
-        completedCount.textContent = `${completed} ${completed === 1 ? 'task' : 'tasks'}`;
+        pendingCount.textContent = `${pending} TASK${pending !== 1 ? 'S' : ''}`;
+        completedCount.textContent = `${completed} TASK${completed !== 1 ? 'S' : ''}`;
 
         pendingEmpty.classList.toggle('hidden', pending > 0);
         completedEmpty.classList.toggle('hidden', completed > 0);
@@ -186,6 +242,8 @@
         });
 
         updateCounts();
+        updateDashboard();
+        applyFilter();
     }
 
     // --- Inline Edit ---
@@ -259,6 +317,20 @@
         addTask(taskInput.value);
         taskInput.value = '';
         taskInput.focus();
+    });
+
+    // Filter buttons
+    filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            setFilter(btn.dataset.filter);
+        });
+    });
+
+    // Nav buttons
+    navBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            setFilter(btn.dataset.filter);
+        });
     });
 
     // --- Init ---

@@ -7,165 +7,212 @@
     <title>NEXORA — AI-Powered Developer Platform</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header class="navbar" role="banner">
         <div class="container navbar__inner">
             <a href="#" class="navbar__logo" aria-label="NEXORA Home">
-                <span class="logo-icon">◆</span> NEXORA
+                <span class="logo-mark">[N]</span> NEXORA
             </a>
             <nav class="navbar__nav" role="navigation" aria-label="Main navigation">
                 <ul class="navbar__links">
-                    <li><a href="#product" class="navbar__link">Product</a></li>
+                    <li><a href="#home" class="navbar__link">Home</a></li>
                     <li><a href="#features" class="navbar__link">Features</a></li>
                     <li><a href="#about" class="navbar__link">About</a></li>
-                    <li><a href="#contact" class="navbar__link">Contact</a></li>
+                    <li><a href="#testimonials" class="navbar__link">Testimonials</a></li>
                 </ul>
             </nav>
-            <a href="#cta" class="btn btn--primary btn--sm navbar__cta">Get Started</a>
+            <a href="#cta" class="btn btn--primary navbar__cta">GET STARTED &rarr;</a>
+            <label for="nav-toggle" class="navbar__toggle" aria-label="Toggle navigation" tabindex="0">
+                <span class="navbar__toggle-bar"></span>
+                <span class="navbar__toggle-bar"></span>
+                <span class="navbar__toggle-bar"></span>
+            </label>
+        </div>
+        <input type="checkbox" id="nav-toggle" class="navbar__checkbox" aria-hidden="true">
+        <div class="navbar__mobile">
+            <ul class="navbar__mobile-links">
+                <li><a href="#home" class="navbar__mobile-link">Home</a></li>
+                <li><a href="#features" class="navbar__mobile-link">Features</a></li>
+                <li><a href="#about" class="navbar__mobile-link">About</a></li>
+                <li><a href="#testimonials" class="navbar__mobile-link">Testimonials</a></li>
+                <li><a href="#cta" class="btn btn--primary navbar__mobile-cta">GET STARTED &rarr;</a></li>
+            </ul>
         </div>
     </header>
 
     <main>
+        <!-- HERO -->
         <section class="hero" id="home">
             <div class="container hero__inner">
                 <div class="hero__content">
-                    <span class="hero__eyebrow">AI-POWERED DEVELOPER PLATFORM</span>
-                    <h1 class="hero__title">Build faster.<br>Ship smarter.</h1>
+                    <span class="hero__label">01 / INTRODUCTION</span>
+                    <h1 class="hero__title">BUILD<br>SOMETHING<br>BOLD.</h1>
                     <p class="hero__description">
                         NEXORA accelerates your entire development workflow — from planning and coding to testing and deployment — so you can focus on building what matters.
                     </p>
                     <div class="hero__actions">
-                        <a href="#cta" class="btn btn--primary btn--lg">Get Started</a>
-                        <a href="#features" class="btn btn--ghost btn--lg">Explore Features</a>
+                        <a href="#cta" class="btn btn--primary btn--lg">START BUILDING &rarr;</a>
+                        <a href="#features" class="btn btn--ghost btn--lg">EXPLORE FEATURES</a>
                     </div>
                 </div>
                 <div class="hero__visual">
-                    <div class="mockup">
-                        <div class="mockup__header">
-                            <div class="mockup__dots">
-                                <span class="dot dot--red"></span>
-                                <span class="dot dot--yellow"></span>
-                                <span class="dot dot--green"></span>
-                            </div>
-                            <span class="mockup__title">NEXORA AI WORKSPACE</span>
-                        </div>
-                        <div class="mockup__body">
-                            <div class="mockup__line mockup__line--label">Project: DevPilot</div>
-                            <div class="mockup__divider"></div>
-                            <div class="mockup__task"><span class="check">✓</span> Architecture analyzed</div>
-                            <div class="mockup__task"><span class="check">✓</span> Implementation generated</div>
-                            <div class="mockup__task"><span class="check">✓</span> Tests completed</div>
-                            <div class="mockup__divider"></div>
-                            <div class="mockup__status">
-                                <span class="status-bar">
-                                    <span class="status-bar__fill"></span>
-                                </span>
-                                <span class="status-text">41 / 41 tests passing</span>
-                            </div>
-                        </div>
+                    <div class="hero__shape hero__shape--cobalt"></div>
+                    <div class="hero__shape hero__shape--yellow"></div>
+                    <div class="hero__shape hero__shape--red"></div>
+                    <div class="hero__shape hero__shape--number">01</div>
+                    <div class="hero__shape hero__shape--cross">&times;</div>
+                    <div class="hero__shape hero__shape--grid">
+                        <span></span><span></span><span></span>
+                        <span></span><span></span><span></span>
+                        <span></span><span></span><span></span>
                     </div>
+                    <div class="hero__shape hero__shape--arrow">&rarr;</div>
                 </div>
             </div>
         </section>
 
+        <!-- STATEMENT STRIP -->
+        <section class="marquee" aria-label="Statement strip">
+            <div class="marquee__inner">
+                <span class="marquee__text">IDEAS &rarr; DESIGN &rarr; BUILD &rarr; LAUNCH &rarr; REPEAT &rarr; IDEAS &rarr; DESIGN &rarr; BUILD &rarr; LAUNCH &rarr; REPEAT &rarr; </span>
+                <span class="marquee__text" aria-hidden="true">IDEAS &rarr; DESIGN &rarr; BUILD &rarr; LAUNCH &rarr; REPEAT &rarr; IDEAS &rarr; DESIGN &rarr; BUILD &rarr; LAUNCH &rarr; REPEAT &rarr; </span>
+            </div>
+        </section>
+
+        <!-- FEATURES -->
         <section class="features" id="features">
             <div class="container">
                 <div class="section-header">
-                    <span class="section-label">FEATURES</span>
-                    <h2 class="section-title">Everything you need to ship faster</h2>
-                    <p class="section-description">Powerful tools designed to streamline every stage of your development lifecycle.</p>
+                    <span class="section-label">02 / FEATURES</span>
+                    <h2 class="section-title">WHY THIS<br>WORKS.</h2>
                 </div>
                 <div class="features__grid">
-                    <article class="feature-card">
-                        <div class="feature-card__icon">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                                <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
-                                <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
-                            </svg>
-                        </div>
-                        <h3 class="feature-card__title">AI Planning</h3>
-                        <p class="feature-card__description">Turn ideas into structured development plans. NEXORA analyzes your requirements and creates actionable roadmaps in seconds.</p>
+                    <article class="feature-card feature-card--black">
+                        <span class="feature-card__number">01</span>
+                        <h3 class="feature-card__title">FAST</h3>
+                        <p class="feature-card__description">Turn ideas into structured development plans in seconds. AI analyzes your requirements and creates actionable roadmaps instantly.</p>
                     </article>
-                    <article class="feature-card">
-                        <div class="feature-card__icon">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                                <polyline points="16 18 22 12 16 6"></polyline>
-                                <polyline points="8 6 2 12 8 18"></polyline>
-                            </svg>
-                        </div>
-                        <h3 class="feature-card__title">Smart Development</h3>
-                        <p class="feature-card__description">Accelerate implementation with AI-assisted workflows. Write better code faster with intelligent suggestions and context-aware autocomplete.</p>
+                    <article class="feature-card feature-card--blue">
+                        <span class="feature-card__number">02</span>
+                        <h3 class="feature-card__title">SIMPLE</h3>
+                        <p class="feature-card__description">Accelerate implementation with AI-assisted workflows. Write better code faster with intelligent context-aware suggestions.</p>
                     </article>
-                    <article class="feature-card">
-                        <div class="feature-card__icon">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
-                            </svg>
-                        </div>
-                        <h3 class="feature-card__title">Automated Testing</h3>
-                        <p class="feature-card__description">Validate your software before shipping. Generate comprehensive test suites and catch issues early with AI-powered test coverage.</p>
+                    <article class="feature-card feature-card--yellow">
+                        <span class="feature-card__number">03</span>
+                        <h3 class="feature-card__title">RESPONSIVE</h3>
+                        <p class="feature-card__description">Validate your software before shipping. Generate comprehensive test suites and catch issues early with AI-powered coverage.</p>
                     </article>
-                    <article class="feature-card">
-                        <div class="feature-card__icon">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                                <circle cx="12" cy="12" r="10"></circle>
-                                <line x1="2" y1="12" x2="22" y2="12"></line>
-                                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
-                            </svg>
-                        </div>
-                        <h3 class="feature-card__title">One-Click Deploy</h3>
+                    <article class="feature-card feature-card--red">
+                        <span class="feature-card__number">04</span>
+                        <h3 class="feature-card__title">BUILT TO SCALE</h3>
                         <p class="feature-card__description">Ship to production with confidence. Deploy globally with zero configuration and built-in monitoring from day one.</p>
                     </article>
                 </div>
             </div>
         </section>
 
+        <!-- VISUAL BREAK -->
+        <section class="visual-break" aria-hidden="true">
+            <div class="visual-break__inner">
+                <div class="visual-break__shape visual-break__shape--circle"></div>
+                <h2 class="visual-break__text">MAKE<br>IT<br>MATTER.</h2>
+                <div class="visual-break__shape visual-break__shape--square"></div>
+            </div>
+        </section>
+
+        <!-- ABOUT -->
         <section class="about" id="about">
             <div class="container about__inner">
+                <div class="about__left">
+                    <span class="about__big-number" aria-hidden="true">03</span>
+                    <div class="about__meta">
+                        <span class="about__meta-block">DESIGN</span>
+                        <span class="about__meta-block">FUNCTION</span>
+                        <span class="about__meta-block">IMPACT</span>
+                    </div>
+                </div>
                 <div class="about__content">
-                    <span class="section-label">ABOUT NEXORA</span>
-                    <h2 class="section-title">Built for developers who demand more</h2>
+                    <span class="section-label">03 / THE IDEA</span>
+                    <h2 class="section-title">GOOD DESIGN<br>SHOULDN'T<br>FEEL ORDINARY.</h2>
                     <p class="about__text">
                         NEXORA was created with a single mission: eliminate the friction between writing code and shipping production-ready software. Our AI platform understands your codebase, adapts to your workflow, and delivers results you can trust.
                     </p>
                     <p class="about__text">
                         Whether you're a solo developer or part of a large engineering team, NEXORA scales with you — providing intelligent assistance at every step without getting in your way.
                     </p>
-                </div>
-                <div class="about__stats">
-                    <div class="stat-card">
-                        <span class="stat-card__number">10K+</span>
-                        <span class="stat-card__label">Developers</span>
-                    </div>
-                    <div class="stat-card">
-                        <span class="stat-card__number">98%</span>
-                        <span class="stat-card__label">Build Success</span>
-                    </div>
-                    <div class="stat-card">
-                        <span class="stat-card__number">4.9/5</span>
-                        <span class="stat-card__label">User Rating</span>
+                    <div class="about__stats">
+                        <div class="stat-card">
+                            <span class="stat-card__number">10K+</span>
+                            <span class="stat-card__label">Developers</span>
+                        </div>
+                        <div class="stat-card">
+                            <span class="stat-card__number">98%</span>
+                            <span class="stat-card__label">Build Success</span>
+                        </div>
+                        <div class="stat-card">
+                            <span class="stat-card__number">4.9/5</span>
+                            <span class="stat-card__label">User Rating</span>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
+        <!-- TESTIMONIALS -->
+        <section class="testimonials" id="testimonials">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-label">04 / PEOPLE SAY</span>
+                    <h2 class="section-title">WHAT THEY<br>THINK.</h2>
+                </div>
+                <div class="testimonials__grid">
+                    <article class="testimonial-card">
+                        <span class="testimonial-card__quote">&ldquo;</span>
+                        <blockquote class="testimonial-card__text">Design that actually feels alive. NEXORA changed how our team ships code.</blockquote>
+                        <div class="testimonial-card__author">
+                            <span class="testimonial-card__name">Alex Chen</span>
+                            <span class="testimonial-card__role">Product Lead, Vercel</span>
+                        </div>
+                    </article>
+                    <article class="testimonial-card">
+                        <span class="testimonial-card__quote">&ldquo;</span>
+                        <blockquote class="testimonial-card__text">We cut our deployment time by 60%. The AI planning alone is worth it.</blockquote>
+                        <div class="testimonial-card__author">
+                            <span class="testimonial-card__name">Sarah Kim</span>
+                            <span class="testimonial-card__role">CTO, StartupXYZ</span>
+                        </div>
+                    </article>
+                    <article class="testimonial-card">
+                        <span class="testimonial-card__quote">&ldquo;</span>
+                        <blockquote class="testimonial-card__text">Finally, a tool that understands developers. Bold, fast, and reliable.</blockquote>
+                        <div class="testimonial-card__author">
+                            <span class="testimonial-card__name">Marcus Rivera</span>
+                            <span class="testimonial-card__role">Senior Engineer, Stripe</span>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA -->
         <section class="cta" id="cta">
             <div class="container cta__inner">
-                <h2 class="cta__title">Ready to build better software?</h2>
+                <h2 class="cta__title">READY TO BUILD<br>SOMETHING GREAT?</h2>
                 <p class="cta__description">Start building with NEXORA today. Free for individual developers.</p>
-                <a href="#" class="btn btn--primary btn--lg">Get Started</a>
+                <a href="#" class="btn btn--accent btn--lg">GET STARTED &rarr;</a>
+                <span class="cta__subtext">No credit card required. Deploy in minutes.</span>
             </div>
         </section>
     </main>
 
-    <footer class="footer" id="contact" role="contentinfo">
+    <footer class="footer" role="contentinfo">
         <div class="container footer__inner">
             <div class="footer__brand">
                 <a href="#" class="footer__logo" aria-label="NEXORA Home">
-                    <span class="logo-icon">◆</span> NEXORA
+                    <span class="logo-mark">[N]</span> NEXORA
                 </a>
                 <p class="footer__tagline">Build faster. Ship smarter.</p>
             </div>
@@ -173,7 +220,7 @@
                 <div class="footer__group">
                     <h4 class="footer__heading">Product</h4>
                     <ul>
-                        <li><a href="#">Features</a></li>
+                        <li><a href="#features">Features</a></li>
                         <li><a href="#">Pricing</a></li>
                         <li><a href="#">Changelog</a></li>
                     </ul>
@@ -181,7 +228,7 @@
                 <div class="footer__group">
                     <h4 class="footer__heading">Company</h4>
                     <ul>
-                        <li><a href="#">About</a></li>
+                        <li><a href="#about">About</a></li>
                         <li><a href="#">Blog</a></li>
                         <li><a href="#">Careers</a></li>
                     </ul>
@@ -198,7 +245,7 @@
         </div>
         <div class="footer__bottom">
             <div class="container">
-                <p>© 2026 NEXORA. All rights reserved.</p>
+                <p>&copy; 2026 &mdash; ALL RIGHTS RESERVED.</p>
             </div>
         </div>
     </footer>

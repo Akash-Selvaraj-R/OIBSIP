@@ -1,31 +1,43 @@
-## NEXORA — Landing Page
+## NEXORA — Landing Page (Neo-Brutalist)
 
 ### Overview
 
-A professional, responsive landing page for **NEXORA**, a fictional AI-powered developer productivity platform. This project demonstrates strong fundamentals in HTML5, CSS3, responsive design, and modern UI/UX principles.
+A premium Neo-Brutalist landing page for **NEXORA**, a fictional AI-powered developer productivity platform. The design combines bold typography, thick black borders, hard offset shadows, and deliberate color blocking to create a memorable, editorial-style product page.
 
-### Objective
+### Design Language
 
-This project was built as part of the **Oasis Infobyte Web Development & Designing Internship** (Level 1 — Task 1). It showcases foundational web development skills including semantic HTML, CSS design systems, responsive layouts, and accessible markup.
+**Neo-Brutalism × Editorial Design × Modern Product Branding**
+
+- Oversized typography with Space Grotesk
+- Thick 3px solid black borders
+- Hard offset box-shadows (no blur)
+- Asymmetric layouts
+- Bold color blocks (cobalt, yellow, red)
+- CSS-only geometric hero composition
+- Intentional visual tension
 
 ### Features
 
-- Sticky navigation bar with blur backdrop
-- Hero section with headline, supporting text, and CTA buttons
-- Visual product mockup built with HTML/CSS (no images)
-- Feature cards section (4 cards with icons)
-- About section with two-column layout and statistics
-- Call-to-action section
-- Footer with placeholder links
-- Responsive design across all screen sizes
-- CSS-based hover and focus interactions
-- Accessible markup with semantic HTML
+- **Floating editorial navbar** with thick border and hard shadow
+- **Explosive hero** with asymmetric layout and CSS geometric shapes
+- **Animated statement strip** (marquee)
+- **Feature cards** with distinct color backgrounds and hover movement
+- **Visual break section** (full-width cobalt block)
+- **About section** with editorial manifesto layout
+- **Testimonials** in bold editorial blocks
+- **Dramatic CTA** with full-width black section
+- **Neo-Brutalist footer** with strong typography
+- **CSS-only mobile navigation** (checkbox hack, no JavaScript)
+- **Responsive design** across all screen sizes
+- **Accessible markup** with semantic HTML5
+- **Reduced motion support** via `prefers-reduced-motion`
 
 ### Technologies
 
-- HTML5
-- CSS3 (Custom Properties, Flexbox, Grid, Media Queries)
-- Google Fonts (Inter)
+- HTML5 (semantic markup)
+- CSS3 (Custom Properties, Flexbox, Grid, Media Queries, Animations)
+- Google Fonts (Space Grotesk)
+- Zero JavaScript
 
 ### Run Locally
 
@@ -36,10 +48,8 @@ No build tools, server, or dependencies required.
 
 ### Responsive Testing
 
-The page has been tested at the following breakpoints:
-
 - **1440px** — Full desktop layout
-- **1024px** — Tablet layout with stacked hero
+- **1024px** — Tablet layout with adjusted grid
 - **768px** — Mobile layout with single-column cards
 - **480px** — Small mobile optimizations
 - **375px** — Compact layout verification
@@ -52,6 +62,17 @@ nexora-landing/
 ├── style.css
 └── README.md
 ```
+
+### Color Palette
+
+| Token | Hex | Usage |
+|-------|-----|-------|
+| Background | `#f5f0e8` | Off-white / paper |
+| Black | `#0a0a0a` | Typography, borders, shadows |
+| Cobalt | `#2563eb` | Primary accent |
+| Yellow | `#facc15` | Secondary accent |
+| Red | `#ef4444` | Tertiary accent |
+| White | `#ffffff` | Contrast |
 
 ### License
 

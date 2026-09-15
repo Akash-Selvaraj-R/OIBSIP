@@ -1,8 +1,8 @@
 /* ============================================
-   CALCX — Premium Calculator Styles
+   CALCX — Neo-Brutalist Computational Object
    ============================================ */
 
-/* Reset & Base */
+/* Reset */
 *,
 *::before,
 *::after {
@@ -12,41 +12,17 @@
 }
 
 :root {
-  --bg-primary: #0f0f13;
-  --bg-calculator: #1a1a24;
-  --bg-display: #12121a;
-  --bg-button: #252532;
-  --bg-button-hover: #2e2e40;
-  --bg-button-active: #38384d;
-  --bg-operator: #4a3aff;
-  --bg-operator-hover: #5b4dff;
-  --bg-operator-active: #6b5cff;
-  --bg-equals: #22c55e;
-  --bg-equals-hover: #34d399;
-  --bg-equals-active: #4ade80;
-  --bg-control: #2a2a3a;
-  --bg-control-hover: #35354a;
-  --text-primary: #f0f0f5;
-  --text-secondary: #8888a0;
-  --text-display: #ffffff;
-  --text-expression: #7a7a95;
-  --text-operator: #ffffff;
-  --text-control: #c0c0d0;
-  --border-subtle: rgba(255, 255, 255, 0.06);
-  --shadow-calculator: 
-    0 25px 60px rgba(0, 0, 0, 0.5),
-    0 10px 20px rgba(0, 0, 0, 0.3);
-  --shadow-button: 
-    0 2px 8px rgba(0, 0, 0, 0.3);
-  --shadow-button-hover: 
-    0 4px 12px rgba(0, 0, 0, 0.4);
-  --shadow-operator: 
-    0 4px 15px rgba(74, 58, 255, 0.3);
-  --radius-calculator: 24px;
-  --radius-display: 16px;
-  --radius-button: 14px;
-  --transition-fast: 0.15s ease;
-  --transition-normal: 0.25s ease;
+  --paper: #f5f0e8;
+  --ink: #111111;
+  --blue: #2244dd;
+  --yellow: #facc15;
+  --red: #ef4444;
+  --lime: #a3e635;
+  --gray: #9ca3af;
+  --border-w: 3px;
+  --shadow: 6px 6px 0 var(--ink);
+  --shadow-sm: 4px 4px 0 var(--ink);
+  --shadow-xs: 3px 3px 0 var(--ink);
 }
 
 html {
@@ -54,68 +30,208 @@ html {
 }
 
 body {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  background: var(--bg-primary);
-  color: var(--text-primary);
+  font-family: 'Space Grotesk', 'Inter', sans-serif;
+  background: var(--paper);
+  color: var(--ink);
   min-height: 100vh;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  padding: 20px;
+  padding: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
 }
 
-/* Calculator Container */
-.calculator {
+/* ============================================
+   NAV / HEADER
+   ============================================ */
+
+.nav {
   width: 100%;
-  max-width: 360px;
-  background: var(--bg-calculator);
-  border-radius: var(--radius-calculator);
-  padding: 24px;
-  box-shadow: var(--shadow-calculator);
-  border: 1px solid var(--border-subtle);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 28px;
+  border-bottom: var(--border-w) solid var(--ink);
+  background: var(--paper);
+  flex-wrap: wrap;
+  gap: 8px;
 }
 
-/* Header */
-.calc-header {
-  text-align: center;
-  margin-bottom: 20px;
-}
-
-.calc-title {
-  font-size: 0.85rem;
-  font-weight: 600;
-  letter-spacing: 3px;
-  color: var(--text-secondary);
+.nav-brand {
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: 2px;
   text-transform: uppercase;
 }
 
-/* Display */
+.tm {
+  font-size: 0.55em;
+  vertical-align: super;
+}
+
+.nav-label {
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--gray);
+}
+
+.nav-links {
+  display: flex;
+  gap: 18px;
+}
+
+.nav-link {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  cursor: pointer;
+  padding: 4px 0;
+  border-bottom: 2px solid transparent;
+  transition: border-color 0.15s ease;
+}
+
+.nav-link-active {
+  border-bottom-color: var(--ink);
+}
+
+.nav-link:hover {
+  border-bottom-color: var(--ink);
+}
+
+/* ============================================
+   MAIN COMPOSITION
+   ============================================ */
+
+.composition {
+  width: 100%;
+  max-width: 1200px;
+  display: grid;
+  grid-template-columns: 160px 1fr 160px;
+  gap: 0;
+  flex: 1;
+  align-items: start;
+  padding: 40px 20px;
+  min-height: calc(100vh - 120px);
+}
+
+/* ============================================
+   LEFT PANEL — Brand / Information
+   ============================================ */
+
+.panel-left {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding-top: 20px;
+  position: relative;
+}
+
+.brand-block {
+  display: flex;
+  flex-direction: column;
+}
+
+.brand-num {
+  font-size: 2.2rem;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--ink);
+}
+
+.brand-label {
+  font-size: 0.6rem;
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--gray);
+  margin-top: 4px;
+}
+
+.deco-circle {
+  width: 48px;
+  height: 48px;
+  border: var(--border-w) solid var(--ink);
+  border-radius: 50%;
+  margin-top: 12px;
+}
+
+.deco-plus {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--blue);
+  line-height: 1;
+  margin-top: 8px;
+}
+
+/* ============================================
+   CALCULATOR — Main Object
+   ============================================ */
+
+.calculator {
+  width: 100%;
+  max-width: 400px;
+  justify-self: center;
+  background: var(--ink);
+  border: var(--border-w) solid var(--ink);
+  padding: 24px;
+  position: relative;
+}
+
+.calculator::before {
+  content: '';
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  right: -10px;
+  bottom: -10px;
+  background: var(--ink);
+  z-index: -1;
+}
+
+/* ============================================
+   DISPLAY — Visual Centerpiece
+   ============================================ */
+
 .calc-display {
-  background: var(--bg-display);
-  border-radius: var(--radius-display);
-  padding: 20px 24px;
-  margin-bottom: 20px;
-  min-height: 110px;
+  background: var(--paper);
+  border: var(--border-w) solid var(--ink);
+  padding: 24px;
+  margin-bottom: 18px;
+  min-height: 130px;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
   align-items: flex-end;
   overflow: hidden;
-  border: 1px solid var(--border-subtle);
+  position: relative;
+}
+
+.calc-display::after {
+  content: 'DISPLAY';
+  position: absolute;
+  top: 10px;
+  left: 14px;
+  font-size: 0.55rem;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--gray);
 }
 
 .expression {
-  font-size: 1.1rem;
-  font-weight: 400;
-  color: var(--text-expression);
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: var(--gray);
   min-height: 28px;
   word-break: break-all;
   text-align: right;
   width: 100%;
   line-height: 1.4;
-  transition: color var(--transition-fast);
 }
 
 .expression:empty::before {
@@ -123,47 +239,54 @@ body {
 }
 
 .result {
-  font-size: 2.75rem;
-  font-weight: 600;
-  color: var(--text-display);
+  font-size: clamp(2.2rem, 6vw, 3.4rem);
+  font-weight: 700;
+  color: var(--ink);
   word-break: break-all;
   text-align: right;
   width: 100%;
-  line-height: 1.2;
+  line-height: 1.1;
   margin-top: 8px;
-  transition: font-size var(--transition-normal), color var(--transition-fast);
+  letter-spacing: -1px;
 }
 
 .result.error {
-  font-size: 1.2rem;
-  color: #ef4444;
-  font-weight: 500;
+  font-size: 1rem;
+  color: var(--red);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
-/* Button Grid */
+/* ============================================
+   BUTTON GRID
+   ============================================ */
+
 .calc-buttons {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 12px;
+  gap: 10px;
 }
 
-/* Button Base */
+/* ============================================
+   BUTTON BASE — Tactile System
+   ============================================ */
+
 .btn {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Space Grotesk', 'Inter', sans-serif;
   font-size: 1.25rem;
-  font-weight: 500;
-  border: none;
-  border-radius: var(--radius-button);
+  font-weight: 600;
+  border: var(--border-w) solid var(--ink);
+  border-radius: 0;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
   aspect-ratio: 1;
-  transition: 
-    background-color var(--transition-fast),
-    transform var(--transition-fast),
-    box-shadow var(--transition-fast);
-  box-shadow: var(--shadow-button);
+  transition:
+    transform 0.1s ease,
+    box-shadow 0.1s ease;
+  box-shadow: var(--shadow-sm);
   outline: none;
   user-select: none;
   -webkit-tap-highlight-color: transparent;
@@ -171,38 +294,27 @@ body {
   overflow: hidden;
 }
 
-.btn::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(circle at center, rgba(255,255,255,0.15) 0%, transparent 70%);
-  opacity: 0;
-  transition: opacity var(--transition-fast);
-  pointer-events: none;
-}
-
-.btn:active::after {
-  opacity: 1;
-}
-
 .btn:active {
-  transform: scale(0.95);
+  transform: translate(4px, 4px);
+  box-shadow: 0 0 0 var(--ink);
 }
 
 .btn:focus-visible {
-  outline: 2px solid var(--bg-operator);
+  outline: 3px solid var(--blue);
   outline-offset: 2px;
 }
 
-/* Number Buttons */
+/* ============================================
+   NUMBER BUTTONS — Paper/Off-White
+   ============================================ */
+
 .btn-number {
-  background: var(--bg-button);
-  color: var(--text-primary);
+  background: var(--paper);
+  color: var(--ink);
 }
 
 .btn-number:hover {
-  background: var(--bg-button-hover);
-  box-shadow: var(--shadow-button-hover);
+  background: #eae5db;
 }
 
 /* Zero Button — Spans 2 Columns */
@@ -212,44 +324,44 @@ body {
   height: 100%;
 }
 
-/* Operator Buttons */
+/* ============================================
+   OPERATOR BUTTONS — Electric Blue
+   ============================================ */
+
 .btn-operator {
-  background: var(--bg-operator);
-  color: var(--text-operator);
-  box-shadow: var(--shadow-operator);
+  background: var(--blue);
+  color: #ffffff;
 }
 
 .btn-operator:hover {
-  background: var(--bg-operator-hover);
+  background: #1a36b8;
 }
 
-.btn-operator:active {
-  background: var(--bg-operator-active);
-}
+/* ============================================
+   CONTROL BUTTONS (AC, ⌫) — Vivid Red
+   ============================================ */
 
-/* Control Buttons (AC, ⌫) */
 .btn-control {
-  background: var(--bg-control);
-  color: var(--text-control);
+  background: var(--red);
+  color: #ffffff;
 }
 
 .btn-control:hover {
-  background: var(--bg-control-hover);
+  background: #dc2626;
 }
 
-/* Equals Buttons */
+/* ============================================
+   EQUALS BUTTONS — Bright Yellow
+   ============================================ */
+
 .btn-equals {
-  background: var(--bg-equals);
-  color: #0f0f13;
-  font-weight: 600;
+  background: var(--yellow);
+  color: var(--ink);
+  font-weight: 700;
 }
 
 .btn-equals:hover {
-  background: var(--bg-equals-hover);
-}
-
-.btn-equals:active {
-  background: var(--bg-equals-active);
+  background: #eab308;
 }
 
 .btn-equals-secondary {
@@ -257,126 +369,115 @@ body {
 }
 
 /* ============================================
-   Responsive Design
+   RIGHT PANEL — Annotations
    ============================================ */
 
-/* Tablet and below */
-@media (max-width: 480px) {
-  body {
-    padding: 12px;
-    align-items: flex-start;
-    padding-top: 40px;
-  }
-
-  .calculator {
-    max-width: 100%;
-    padding: 18px;
-    border-radius: 20px;
-  }
-
-  .calc-display {
-    padding: 16px 18px;
-    min-height: 95px;
-  }
-
-  .expression {
-    font-size: 1rem;
-  }
-
-  .result {
-    font-size: 2.25rem;
-  }
-
-  .calc-buttons {
-    gap: 10px;
-  }
-
-  .btn {
-    font-size: 1.15rem;
-    border-radius: 12px;
-  }
+.panel-right {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding-top: 20px;
+  align-items: flex-end;
 }
 
-/* Very small phones */
-@media (max-width: 350px) {
-  .calculator {
-    padding: 14px;
-  }
-
-  .calc-display {
-    padding: 14px 16px;
-    min-height: 85px;
-  }
-
-  .result {
-    font-size: 1.9rem;
-  }
-
-  .calc-buttons {
-    gap: 8px;
-  }
-
-  .btn {
-    font-size: 1.05rem;
-    border-radius: 10px;
-  }
+.anno-block {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
 }
 
-/* Landscape phones */
-@media (max-height: 650px) and (orientation: landscape) {
-  body {
-    align-items: center;
-    padding: 10px;
+.anno-num {
+  font-size: 1.4rem;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--ink);
+}
+
+.anno-label {
+  font-size: 0.55rem;
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--gray);
+  margin-top: 4px;
+}
+
+.deco-arrow {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--blue);
+  line-height: 1;
+}
+
+.deco-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+  margin-top: 12px;
+}
+
+.deco-grid span {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--gray);
+  border: 2px solid var(--gray);
+}
+
+.deco-rect {
+  width: 40px;
+  height: 60px;
+  border: var(--border-w) solid var(--ink);
+  margin-top: 8px;
+}
+
+/* ============================================
+   FOOTER
+   ============================================ */
+
+.footer-mark {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px 28px;
+  border-top: var(--border-w) solid var(--ink);
+}
+
+.footer-line {
+  flex: 1;
+  height: 2px;
+  background: var(--ink);
+}
+
+.footer-text {
+  font-size: 0.6rem;
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--gray);
+  white-space: nowrap;
+}
+
+/* ============================================
+   RESPONSIVE — Desktop Large
+   ============================================ */
+
+@media (min-width: 1200px) {
+  .composition {
+    padding: 50px 40px;
   }
 
   .calculator {
     max-width: 420px;
-    padding: 16px;
-  }
-
-  .calc-display {
-    padding: 12px 16px;
-    min-height: 70px;
-    margin-bottom: 12px;
-  }
-
-  .expression {
-    font-size: 0.9rem;
-    min-height: 20px;
   }
 
   .result {
-    font-size: 1.8rem;
-    margin-top: 4px;
-  }
-
-  .calc-header {
-    margin-bottom: 12px;
-  }
-
-  .calc-buttons {
-    gap: 8px;
-  }
-
-  .btn {
-    font-size: 1.1rem;
-  }
-}
-
-/* Large screens */
-@media (min-width: 768px) {
-  .calculator {
-    padding: 28px;
-    max-width: 380px;
-  }
-
-  .calc-display {
-    padding: 24px 28px;
-    min-height: 120px;
-  }
-
-  .result {
-    font-size: 3rem;
+    font-size: 3.6rem;
   }
 
   .btn {
@@ -384,14 +485,185 @@ body {
   }
 }
 
-/* Hover media query — only apply hover on devices that support it */
-@media (hover: hover) {
-  .btn-number:hover {
-    background: var(--bg-button-hover);
+/* ============================================
+   RESPONSIVE — Tablet
+   ============================================ */
+
+@media (max-width: 1024px) {
+  .composition {
+    grid-template-columns: 1fr;
+    gap: 0;
+    padding: 24px 16px;
+    min-height: auto;
+  }
+
+  .panel-left,
+  .panel-right {
+    display: none;
+  }
+
+  .calculator {
+    max-width: 400px;
+    justify-self: center;
   }
 }
 
-/* Reduced motion preference */
+/* ============================================
+   RESPONSIVE — Mobile
+   ============================================ */
+
+@media (max-width: 480px) {
+  .nav {
+    padding: 10px 14px;
+    gap: 4px;
+  }
+
+  .nav-label {
+    display: none;
+  }
+
+  .nav-links {
+    gap: 12px;
+  }
+
+  .nav-link {
+    font-size: 0.6rem;
+  }
+
+  .composition {
+    padding: 12px 8px;
+  }
+
+  .calculator {
+    max-width: 100%;
+    padding: 14px;
+    background: var(--ink);
+  }
+
+  .calculator::before {
+    display: none;
+  }
+
+  .calc-display {
+    padding: 18px 16px;
+    min-height: 100px;
+  }
+
+  .expression {
+    font-size: 1rem;
+  }
+
+  .result {
+    font-size: clamp(2rem, 8vw, 2.8rem);
+    letter-spacing: -0.5px;
+  }
+
+  .calc-buttons {
+    gap: 8px;
+  }
+
+  .btn {
+    font-size: 1.15rem;
+    box-shadow: var(--shadow-xs);
+  }
+
+  .btn:active {
+    transform: translate(3px, 3px);
+    box-shadow: 0 0 0 var(--ink);
+  }
+
+  .footer-mark {
+    padding: 12px 14px;
+  }
+}
+
+/* ============================================
+   RESPONSIVE — Very Small Phones
+   ============================================ */
+
+@media (max-width: 350px) {
+  .calculator {
+    padding: 10px;
+  }
+
+  .calc-display {
+    padding: 14px 12px;
+    min-height: 80px;
+  }
+
+  .result {
+    font-size: 1.8rem;
+  }
+
+  .calc-buttons {
+    gap: 6px;
+  }
+
+  .btn {
+    font-size: 1.05rem;
+  }
+}
+
+/* ============================================
+   RESPONSIVE — Landscape
+   ============================================ */
+
+@media (max-height: 600px) and (orientation: landscape) {
+  body {
+    justify-content: flex-start;
+  }
+
+  .nav {
+    padding: 6px 16px;
+  }
+
+  .composition {
+    padding: 8px 16px;
+  }
+
+  .calculator {
+    max-width: 360px;
+    padding: 12px;
+  }
+
+  .calc-display {
+    padding: 10px 14px;
+    min-height: 60px;
+  }
+
+  .expression {
+    font-size: 0.85rem;
+    min-height: 18px;
+  }
+
+  .result {
+    font-size: 1.6rem;
+    margin-top: 4px;
+  }
+
+  .calc-buttons {
+    gap: 6px;
+  }
+
+  .btn {
+    font-size: 1rem;
+  }
+}
+
+/* ============================================
+   HOVER — Only on hover-capable devices
+   ============================================ */
+
+@media (hover: hover) {
+  .btn-number:hover {
+    background: #eae5db;
+  }
+}
+
+/* ============================================
+   REDUCED MOTION
+   ============================================ */
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,

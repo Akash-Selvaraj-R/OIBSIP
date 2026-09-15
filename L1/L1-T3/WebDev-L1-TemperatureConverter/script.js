@@ -5,8 +5,24 @@
     const temperatureInput = document.getElementById('temperatureInput');
     const unitSelect = document.getElementById('unitSelect');
     const convertBtn = document.getElementById('convertBtn');
+    const resetBtn = document.getElementById('resetBtn');
     const errorMessage = document.getElementById('errorMessage');
     const resultsSection = document.getElementById('resultsSection');
+
+    // Result display elements
+    const resultPlaceholder = resultsSection.querySelector('.result-placeholder');
+    const resultDisplay = resultsSection.querySelector('.result-display');
+    const resultValue = document.getElementById('resultValue');
+    const resultUnit = document.getElementById('resultUnit');
+    const resultScale = document.getElementById('resultScale');
+    const resultFrom = document.getElementById('resultFrom');
+    const resultCelsius = document.getElementById('resultCelsius');
+    const resultFahrenheit = document.getElementById('resultFahrenheit');
+    const resultKelvin = document.getElementById('resultKelvin');
+    const tempMarker = document.getElementById('tempMarker');
+
+    // Unit selector buttons
+    const unitOptions = document.querySelectorAll('.unit-selector__option');
 
     // Absolute zero thresholds
     const ABSOLUTE_ZERO = {
@@ -24,21 +40,19 @@
 
     // Unit labels
     const UNIT_LABELS = {
-        celsius: 'Celsius',
-        fahrenheit: 'Fahrenheit',
-        kelvin: 'Kelvin'
+        celsius: 'CELSIUS',
+        fahrenheit: 'FAHRENHEIT',
+        kelvin: 'KELVIN'
     };
 
     /**
      * Formats a number to a sensible precision.
-     * Avoids floating-point artifacts like 77.00000000000001.
      */
     function formatTemperature(value) {
         if (Number.isInteger(value)) {
             return value.toString();
         }
-        // Round to 2 decimal places, then remove trailing zeros
-        const rounded = Math.round(value * 100) / 100;
+        var rounded = Math.round(value * 100) / 100;
         return parseFloat(rounded.toFixed(2)).toString();
     }
 
@@ -62,20 +76,19 @@
 
     /**
      * Validates the input value.
-     * Returns the parsed number or null if invalid.
      */
     function validateInput() {
-        const rawValue = temperatureInput.value.trim();
+        var rawValue = temperatureInput.value.trim();
 
         if (rawValue === '') {
-            showError('Please enter a temperature value.');
+            showError('ENTER A VALID TEMPERATURE.');
             return null;
         }
 
-        const value = parseFloat(rawValue);
+        var value = parseFloat(rawValue);
 
         if (isNaN(value)) {
-            showError('Please enter a valid numeric temperature.');
+            showError('ENTER A VALID NUMERIC TEMPERATURE.');
             return null;
         }
 
@@ -86,9 +99,9 @@
      * Checks if the temperature is below absolute zero.
      */
     function checkAbsoluteZero(value, unit) {
-        const threshold = ABSOLUTE_ZERO[unit];
+        var threshold = ABSOLUTE_ZERO[unit];
         if (value < threshold) {
-            showError('That temperature is below absolute zero. Please enter a physically valid temperature.');
+            showError('BELOW ABSOLUTE ZERO. ENTER A PHYSICALLY VALID TEMPERATURE.');
             return false;
         }
         return true;
@@ -98,9 +111,8 @@
      * Converts a temperature value from the given unit to all three units.
      */
     function convertTemperature(value, fromUnit) {
-        let celsius;
+        var celsius;
 
-        // Convert input to Celsius first
         switch (fromUnit) {
             case 'celsius':
                 celsius = value;
@@ -113,8 +125,7 @@
                 break;
         }
 
-        // Derive all three values
-        const results = {
+        var results = {
             celsius: celsius,
             fahrenheit: (celsius * 9 / 5) + 32,
             kelvin: celsius + 273.15
@@ -124,26 +135,50 @@
     }
 
     /**
+     * Updates the temperature scale marker position.
+     * Maps Celsius value to a 0-100% position on the scale.
+     * Scale range: -273.15 to 500°C
+     */
+    function updateTempMarker(celsiusValue) {
+        var minTemp = -273.15;
+        var maxTemp = 500;
+        var clampedValue = Math.max(minTemp, Math.min(maxTemp, celsiusValue));
+        var percentage = ((clampedValue - minTemp) / (maxTemp - minTemp)) * 100;
+        tempMarker.style.left = percentage + '%';
+    }
+
+    /**
      * Displays the conversion results.
      */
-    function displayResults(results) {
-        const html = `
-            <div class="converter__results-grid">
-                <div class="result-card">
-                    <div class="result-card__unit">Celsius</div>
-                    <div class="result-card__value">${formatTemperature(results.celsius)} °C</div>
-                </div>
-                <div class="result-card">
-                    <div class="result-card__unit">Fahrenheit</div>
-                    <div class="result-card__value">${formatTemperature(results.fahrenheit)} °F</div>
-                </div>
-                <div class="result-card">
-                    <div class="result-card__unit">Kelvin</div>
-                    <div class="result-card__value">${formatTemperature(results.kelvin)} K</div>
-                </div>
-            </div>
-        `;
-        resultsSection.innerHTML = html;
+    function displayResults(results, fromUnit, inputValue) {
+        // Find the "from" unit result value
+        var fromValue = results[fromUnit];
+
+        // Update primary result display (the converted "from" unit)
+        // Actually, we show all three. The primary is the one the user input was NOT.
+        // We show the most useful conversion: if they input Celsius, show Fahrenheit prominently.
+        var targetUnit = fromUnit === 'celsius' ? 'fahrenheit' : (fromUnit === 'kelvin' ? 'fahrenheit' : 'celsius');
+
+        resultValue.textContent = formatTemperature(results[targetUnit]);
+        resultUnit.textContent = UNIT_SYMBOLS[targetUnit];
+        resultScale.textContent = UNIT_LABELS[targetUnit];
+        resultFrom.textContent = 'CONVERTED FROM ' + formatTemperature(inputValue) + ' ' + UNIT_SYMBOLS[fromUnit];
+
+        // Update grid cards
+        var celsiusVal = resultCelsius.querySelector('.result-grid__value');
+        var fahrenheitVal = resultFahrenheit.querySelector('.result-grid__value');
+        var kelvinVal = resultKelvin.querySelector('.result-grid__value');
+
+        celsiusVal.textContent = formatTemperature(results.celsius) + ' °C';
+        fahrenheitVal.textContent = formatTemperature(results.fahrenheit) + ' °F';
+        kelvinVal.textContent = formatTemperature(results.kelvin) + ' K';
+
+        // Update temperature scale marker (use Celsius value)
+        updateTempMarker(results.celsius);
+
+        // Toggle visibility
+        resultPlaceholder.style.display = 'none';
+        resultDisplay.style.display = 'block';
     }
 
     /**
@@ -153,7 +188,22 @@
         clearError();
         temperatureInput.value = '';
         unitSelect.value = 'celsius';
-        resultsSection.innerHTML = '<p class="converter__placeholder">Enter a temperature to see the conversion.</p>';
+
+        // Reset unit selector visual state
+        unitOptions.forEach(function (opt) {
+            opt.classList.remove('unit-selector__option--active');
+            opt.setAttribute('aria-checked', 'false');
+        });
+        unitOptions[0].classList.add('unit-selector__option--active');
+        unitOptions[0].setAttribute('aria-checked', 'true');
+
+        // Reset results
+        resultPlaceholder.style.display = 'block';
+        resultDisplay.style.display = 'none';
+
+        // Reset marker
+        tempMarker.style.left = '50%';
+
         temperatureInput.focus();
     }
 
@@ -163,19 +213,44 @@
     function handleConvert() {
         clearError();
 
-        const value = validateInput();
+        var value = validateInput();
         if (value === null) return;
 
-        const unit = unitSelect.value;
+        var unit = unitSelect.value;
 
         if (!checkAbsoluteZero(value, unit)) return;
 
-        const results = convertTemperature(value, unit);
-        displayResults(results);
+        var results = convertTemperature(value, unit);
+        displayResults(results, unit, value);
+    }
+
+    /**
+     * Handles unit selector clicks.
+     */
+    function handleUnitSelect(selectedOption) {
+        var unit = selectedOption.getAttribute('data-unit');
+
+        // Update visual state
+        unitOptions.forEach(function (opt) {
+            opt.classList.remove('unit-selector__option--active');
+            opt.setAttribute('aria-checked', 'false');
+        });
+        selectedOption.classList.add('unit-selector__option--active');
+        selectedOption.setAttribute('aria-checked', 'true');
+
+        // Sync hidden select
+        unitSelect.value = unit;
+
+        // Clear error if visible
+        if (errorMessage.classList.contains('visible')) {
+            clearError();
+        }
     }
 
     // Event Listeners
     convertBtn.addEventListener('click', handleConvert);
+
+    resetBtn.addEventListener('click', resetConverter);
 
     temperatureInput.addEventListener('keydown', function (e) {
         if (e.key === 'Enter') {
@@ -188,6 +263,21 @@
         if (errorMessage.classList.contains('visible')) {
             clearError();
         }
+    });
+
+    // Unit selector click handlers
+    unitOptions.forEach(function (option) {
+        option.addEventListener('click', function () {
+            handleUnitSelect(this);
+        });
+
+        // Keyboard support for unit selector
+        option.addEventListener('keydown', function (e) {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                handleUnitSelect(this);
+            }
+        });
     });
 
     // Expose resetConverter for potential future use

@@ -9,32 +9,55 @@
 <body>
   <div class="dashboard-container">
     <nav class="navbar">
-      <div class="logo">AUTHCORE</div>
-      <button class="btn-logout" id="logoutBtn">Logout</button>
+      <div class="navbar-left">
+        <div class="brand-logo">AUTHCORE</div>
+        <div class="navbar-divider"></div>
+        <div class="navbar-title">IDENTITY CONSOLE</div>
+      </div>
+      <div class="navbar-session">SESSION ACTIVE</div>
+      <button class="btn-logout" id="logoutBtn">LOGOUT</button>
     </nav>
+
     <main class="dashboard-main">
-      <div class="dashboard-card">
-        <div class="welcome-section">
-          <h1 id="welcomeMessage">Welcome back</h1>
-          <p class="dashboard-subtitle">Authenticated Dashboard</p>
+      <div class="dashboard-header">
+        <div class="dashboard-header-label">IDENTITY CONSOLE</div>
+        <div class="dashboard-header-title">WELCOME BACK</div>
+      </div>
+
+      <div class="status-row">
+        <div class="status-indicator"></div>
+        <div class="status-label">AUTHENTICATED</div>
+      </div>
+
+      <div class="info-grid">
+        <div class="info-cell">
+          <div class="info-label">STATUS</div>
+          <div class="info-value session-active" id="sessionStatus">AUTHENTICATED</div>
         </div>
-        <div class="info-grid">
-          <div class="info-card">
-            <div class="info-label">Account</div>
-            <div class="info-value" id="accountInfo">—</div>
-          </div>
-          <div class="info-card">
-            <div class="info-label">Security</div>
-            <div class="info-value" id="securityInfo">Password protected</div>
-          </div>
-          <div class="info-card">
-            <div class="info-label">Session Status</div>
-            <div class="info-value session-active" id="sessionStatus">Active</div>
-          </div>
+        <div class="info-cell">
+          <div class="info-label">USER</div>
+          <div class="info-value" id="accountInfo">&mdash;</div>
+        </div>
+        <div class="info-cell">
+          <div class="info-label">SESSION</div>
+          <div class="info-value session-active" id="sessionState">ACTIVE</div>
+        </div>
+        <div class="info-cell">
+          <div class="info-label">SECURITY</div>
+          <div class="info-value" id="securityInfo">Password protected</div>
+        </div>
+        <div class="info-cell">
+          <div class="info-label">ACCOUNT</div>
+          <div class="info-value" id="accountId">&mdash;</div>
+        </div>
+        <div class="info-cell">
+          <div class="info-label">LAST ACCESS</div>
+          <div class="info-value" id="lastAccess">&mdash;</div>
         </div>
       </div>
     </main>
   </div>
+
   <script src="script.js"></script>
   <script>
     (async function() {
@@ -45,10 +68,11 @@
           return;
         }
         const data = await res.json();
-        document.getElementById('welcomeMessage').textContent = `Welcome back, ${data.user.username}`;
         document.getElementById('accountInfo').textContent = data.user.email;
+        document.getElementById('accountId').textContent = 'ID-' + String(data.user.id).padStart(6, '0');
         const created = new Date(data.user.created_at);
-        document.getElementById('securityInfo').textContent = `Member since ${created.toLocaleDateString()}`;
+        document.getElementById('securityInfo').textContent = 'Member since ' + created.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: '2-digit' });
+        document.getElementById('lastAccess').textContent = new Date().toLocaleString('en-US', { year: 'numeric', month: 'short', day: '2-digit', hour: '2-digit', minute: '2-digit' });
       } catch (err) {
         window.location.href = '/';
       }

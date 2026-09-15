@@ -44,13 +44,19 @@ const Orders = () => {
   };
 
   if (loading) {
-    return <div className="loading-container"><div className="spinner"></div></div>;
+    return (
+      <div className="loading-container">
+        <div className="spinner"></div>
+        <div className="loading-text">Loading orders...</div>
+      </div>
+    );
   }
 
   return (
     <div className="page-container">
       <div className="page-header">
-        <h1 className="page-title">Your Orders</h1>
+        <div className="brand-stamp black" style={{ marginBottom: '1rem' }}>REAL-TIME</div>
+        <h1 className="page-title">YOUR<br />ORDERS</h1>
         <p className="page-subtitle">Track your pizza orders in real-time</p>
       </div>
 
@@ -78,8 +84,8 @@ const Orders = () => {
 
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                 <span className="order-amount">₹{order.amount}</span>
-                <span style={{ color: order.paymentStatus === 'completed' ? 'var(--success)' : 'var(--warning)', fontSize: '0.85rem', fontWeight: 600 }}>
-                  {order.paymentStatus === 'completed' ? 'Paid' : 'Pending'}
+                <span className={`brand-stamp ${order.paymentStatus === 'completed' ? 'green' : 'yellow'}`}>
+                  {order.paymentStatus === 'completed' ? 'PAID' : 'PENDING'}
                 </span>
               </div>
             </div>
@@ -89,10 +95,10 @@ const Orders = () => {
 
       {orders.length === 0 && (
         <div className="empty-state">
-          <div className="empty-icon">&#128230;</div>
-          <h3 className="empty-title">No orders yet</h3>
-          <p>Start building your custom pizza!</p>
-          <Link to="/build" className="btn btn-primary" style={{ marginTop: '1rem' }}>Build a Pizza</Link>
+          <div className="empty-icon">📦</div>
+          <h3 className="empty-title">NO ORDERS YET</h3>
+          <p>Nothing to bake yet.</p>
+          <Link to="/build" className="btn btn-primary" style={{ marginTop: '1rem' }}>BUILD A PIZZA →</Link>
         </div>
       )}
     </div>

@@ -3,57 +3,303 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="THERMA - A clean temperature utility that converts values between Celsius, Fahrenheit, and Kelvin.">
-    <title>THERMA — Temperature Converter</title>
+    <meta name="description" content="TEMP/01 — Precision temperature conversion system. Convert between Celsius, Fahrenheit, and Kelvin.">
+    <title>TEMP / 01 — Temperature Conversion System</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=IBM+Plex+Mono:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
+    <!-- HEADER -->
     <header class="header">
-        <div class="header__brand">
-            <h1 class="header__logo">THERMA</h1>
-            <p class="header__tagline">Temperature, simplified.</p>
+        <div class="header__left">
+            <span class="header__logo">TEMP <span class="header__slash">/</span> 01</span>
+            <span class="header__divider"></span>
+            <span class="header__subtitle">TEMPERATURE CONVERSION SYSTEM</span>
         </div>
-        <p class="header__description">Convert temperatures instantly across Celsius, Fahrenheit, and Kelvin.</p>
+        <nav class="header__nav" aria-label="Primary navigation">
+            <a href="#converter" class="header__nav-item header__nav-item--active">CONVERTER</a>
+            <a href="#formulas" class="header__nav-item">FORMULAS</a>
+            <a href="#info" class="header__nav-item">INFO</a>
+        </nav>
     </header>
 
+    <!-- MAIN -->
     <main class="main">
-        <section class="converter" aria-label="Temperature Converter">
-            <div class="converter__card">
-                <div class="converter__input-group">
-                    <label for="temperatureInput" class="converter__label">Temperature</label>
-                    <input 
-                        type="number" 
-                        id="temperatureInput" 
-                        class="converter__input" 
-                        placeholder="Enter a temperature"
+
+        <!-- Hero -->
+        <section class="hero" aria-label="System title">
+            <div class="hero__meta">
+                <span class="hero__number">01</span>
+                <span class="hero__label">SYSTEM</span>
+            </div>
+            <h2 class="hero__title">PRECISION<br>CONVERSION<br>SYSTEM</h2>
+            <div class="hero__units">
+                <span>CELSIUS</span>
+                <span class="hero__dot"></span>
+                <span>FAHRENHEIT</span>
+                <span class="hero__dot"></span>
+                <span>KELVIN</span>
+            </div>
+        </section>
+
+        <!-- Converter -->
+        <section id="converter" class="converter" aria-label="Temperature Converter">
+
+            <!-- Input Zone -->
+            <div class="converter__zone converter__zone--input">
+                <div class="converter__zone-header">
+                    <span class="converter__zone-number">01</span>
+                    <span class="converter__zone-label">INPUT</span>
+                </div>
+
+                <div class="converter__field">
+                    <label for="temperatureInput" class="converter__field-label">VALUE</label>
+                    <input
+                        type="number"
+                        id="temperatureInput"
+                        class="converter__input"
+                        placeholder="0.00"
                         inputmode="decimal"
                         autocomplete="off"
                         aria-describedby="errorMessage"
                     >
                 </div>
 
-                <div class="converter__select-group">
-                    <label for="unitSelect" class="converter__label">Convert from</label>
-                    <select id="unitSelect" class="converter__select">
-                        <option value="celsius">Celsius (°C)</option>
-                        <option value="fahrenheit">Fahrenheit (°F)</option>
-                        <option value="kelvin">Kelvin (K)</option>
+                <div class="converter__field">
+                    <span class="converter__field-label">FROM</span>
+                    <div class="unit-selector" role="radiogroup" aria-label="Select source unit">
+                        <button type="button" class="unit-selector__option unit-selector__option--active" data-unit="celsius" role="radio" aria-checked="true">
+                            <span class="unit-selector__symbol">°C</span>
+                            <span class="unit-selector__name">CELSIUS</span>
+                        </button>
+                        <button type="button" class="unit-selector__option" data-unit="fahrenheit" role="radio" aria-checked="false">
+                            <span class="unit-selector__symbol">°F</span>
+                            <span class="unit-selector__name">FAHRENHEIT</span>
+                        </button>
+                        <button type="button" class="unit-selector__option" data-unit="kelvin" role="radio" aria-checked="false">
+                            <span class="unit-selector__symbol">K</span>
+                            <span class="unit-selector__name">KELVIN</span>
+                        </button>
+                    </div>
+                    <!-- Hidden select for JS compatibility -->
+                    <select id="unitSelect" class="sr-only" aria-hidden="true" tabindex="-1">
+                        <option value="celsius">Celsius</option>
+                        <option value="fahrenheit">Fahrenheit</option>
+                        <option value="kelvin">Kelvin</option>
                     </select>
                 </div>
+            </div>
 
-                <button type="button" id="convertBtn" class="converter__button">Convert Temperature</button>
+            <!-- Direction Indicator -->
+            <div class="converter__direction" aria-hidden="true">
+                <div class="converter__direction-line"></div>
+                <div class="converter__direction-arrow">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 5v14M19 12l-7 7-7-7"/>
+                    </svg>
+                </div>
+                <div class="converter__direction-line"></div>
+            </div>
+
+            <!-- Action Zone -->
+            <div class="converter__zone converter__zone--action">
+                <div class="converter__zone-header">
+                    <span class="converter__zone-number">02</span>
+                    <span class="converter__zone-label">CONVERT</span>
+                </div>
+
+                <button type="button" id="convertBtn" class="converter__button">
+                    <span class="converter__button-text">CONVERT TEMPERATURE</span>
+                    <span class="converter__button-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 5v14M19 12l-7 7-7-7"/>
+                        </svg>
+                    </span>
+                </button>
+
+                <button type="button" id="resetBtn" class="converter__reset">RESET SYSTEM</button>
 
                 <div id="errorMessage" class="converter__error" aria-live="polite" role="alert"></div>
+            </div>
 
-                <div id="resultsSection" class="converter__results" aria-live="polite">
-                    <p class="converter__placeholder">Enter a temperature to see the conversion.</p>
+            <!-- Result Zone -->
+            <div id="resultsSection" class="converter__zone converter__zone--result" aria-live="polite">
+                <div class="converter__zone-header">
+                    <span class="converter__zone-number">03</span>
+                    <span class="converter__zone-label">RESULT</span>
+                </div>
+
+                <div class="result-placeholder">
+                    <p class="result-placeholder__text">AWAITING INPUT</p>
+                    <p class="result-placeholder__sub">Enter a temperature value and select a unit to begin conversion.</p>
+                </div>
+
+                <div class="result-display" style="display:none;">
+                    <div class="result-display__value" id="resultValue">—</div>
+                    <div class="result-display__unit" id="resultUnit">°C</div>
+                    <div class="result-display__scale" id="resultScale">CELSIUS</div>
+                    <div class="result-display__from" id="resultFrom">CONVERTED FROM —</div>
+
+                    <!-- Temperature Scale -->
+                    <div class="temp-scale" aria-label="Temperature position on scale">
+                        <div class="temp-scale__labels">
+                            <span>COLD</span>
+                            <span>WARM</span>
+                            <span>HOT</span>
+                        </div>
+                        <div class="temp-scale__track">
+                            <div class="temp-scale__marker" id="tempMarker"></div>
+                        </div>
+                        <div class="temp-scale__range">
+                            <span>-273°C</span>
+                            <span>0°C</span>
+                            <span>100°C</span>
+                            <span>500°C</span>
+                        </div>
+                    </div>
+
+                    <!-- All Conversions Grid -->
+                    <div class="result-grid">
+                        <div class="result-grid__item" id="resultCelsius">
+                            <span class="result-grid__symbol">°C</span>
+                            <span class="result-grid__value">—</span>
+                            <span class="result-grid__label">CELSIUS</span>
+                        </div>
+                        <div class="result-grid__item" id="resultFahrenheit">
+                            <span class="result-grid__symbol">°F</span>
+                            <span class="result-grid__value">—</span>
+                            <span class="result-grid__label">FAHRENHEIT</span>
+                        </div>
+                        <div class="result-grid__item" id="resultKelvin">
+                            <span class="result-grid__symbol">K</span>
+                            <span class="result-grid__value">—</span>
+                            <span class="result-grid__label">KELVIN</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- Formulas Panel -->
+        <section id="formulas" class="formulas" aria-label="Conversion formulas">
+            <div class="formulas__header">
+                <div class="formulas__title-group">
+                    <span class="formulas__number">02</span>
+                    <span class="formulas__title">FORMULA REFERENCE</span>
+                </div>
+                <span class="formulas__line"></span>
+            </div>
+
+            <div class="formulas__grid">
+                <div class="formula-card">
+                    <div class="formula-card__header">
+                        <span class="formula-card__number">F / 01</span>
+                        <span class="formula-card__direction">°C → °F</span>
+                    </div>
+                    <div class="formula-card__body">
+                        <code class="formula-card__math">(C × 9/5) + 32</code>
+                    </div>
+                    <div class="formula-card__label">Celsius to Fahrenheit</div>
+                </div>
+
+                <div class="formula-card">
+                    <div class="formula-card__header">
+                        <span class="formula-card__number">F / 02</span>
+                        <span class="formula-card__direction">°C → K</span>
+                    </div>
+                    <div class="formula-card__body">
+                        <code class="formula-card__math">C + 273.15</code>
+                    </div>
+                    <div class="formula-card__label">Celsius to Kelvin</div>
+                </div>
+
+                <div class="formula-card">
+                    <div class="formula-card__header">
+                        <span class="formula-card__number">F / 03</span>
+                        <span class="formula-card__direction">°F → °C</span>
+                    </div>
+                    <div class="formula-card__body">
+                        <code class="formula-card__math">(F − 32) × 5/9</code>
+                    </div>
+                    <div class="formula-card__label">Fahrenheit to Celsius</div>
+                </div>
+
+                <div class="formula-card">
+                    <div class="formula-card__header">
+                        <span class="formula-card__number">F / 04</span>
+                        <span class="formula-card__direction">°F → K</span>
+                    </div>
+                    <div class="formula-card__body">
+                        <code class="formula-card__math">(F − 32) × 5/9 + 273.15</code>
+                    </div>
+                    <div class="formula-card__label">Fahrenheit to Kelvin</div>
+                </div>
+
+                <div class="formula-card">
+                    <div class="formula-card__header">
+                        <span class="formula-card__number">F / 05</span>
+                        <span class="formula-card__direction">K → °C</span>
+                    </div>
+                    <div class="formula-card__body">
+                        <code class="formula-card__math">K − 273.15</code>
+                    </div>
+                    <div class="formula-card__label">Kelvin to Celsius</div>
+                </div>
+
+                <div class="formula-card">
+                    <div class="formula-card__header">
+                        <span class="formula-card__number">F / 06</span>
+                        <span class="formula-card__direction">K → °F</span>
+                    </div>
+                    <div class="formula-card__body">
+                        <code class="formula-card__math">(K − 273.15) × 9/5 + 32</code>
+                    </div>
+                    <div class="formula-card__label">Kelvin to Fahrenheit</div>
                 </div>
             </div>
         </section>
+
+        <!-- Info Panel -->
+        <section id="info" class="info" aria-label="System information">
+            <div class="info__header">
+                <span class="info__number">03</span>
+                <span class="info__title">INFO</span>
+                <span class="info__line"></span>
+            </div>
+            <div class="info__grid">
+                <div class="info__item">
+                    <span class="info__label">ABSOLUTE ZERO</span>
+                    <span class="info__value">0 K / −273.15°C / −459.67°F</span>
+                </div>
+                <div class="info__item">
+                    <span class="info__label">WATER FREEZING</span>
+                    <span class="info__value">273.15 K / 0°C / 32°F</span>
+                </div>
+                <div class="info__item">
+                    <span class="info__label">WATER BOILING</span>
+                    <span class="info__value">373.15 K / 100°C / 212°F</span>
+                </div>
+            </div>
+        </section>
+
     </main>
 
+    <!-- FOOTER -->
     <footer class="footer">
-        <p>OASIS INFOBYTE — Web Development &amp; Designing — Level 1 Task 3</p>
+        <div class="footer__left">
+            <span class="footer__logo">TEMP / 01</span>
+            <span class="footer__sep">—</span>
+            <span>OASIS INFOBYTE</span>
+        </div>
+        <div class="footer__right">
+            <span>L1 / TASK 3</span>
+            <span class="footer__sep">—</span>
+            <span>WEB DEVELOPMENT</span>
+        </div>
     </footer>
 
     <script src="script.js"></script>

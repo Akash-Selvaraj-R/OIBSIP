@@ -34,8 +34,10 @@ const AdminLogin = () => {
     <div className="auth-container">
       <div className="auth-card fade-in">
         <div className="auth-header">
-          <h1 className="logo" style={{ fontSize: '2rem' }}>CRUST<span>.</span></h1>
-          <h1 className="auth-title">Admin Panel</h1>
+          <h1 className="logo" style={{ fontSize: '2rem', color: 'var(--black)', justifyContent: 'center' }}>
+            CRUST<span>.</span><span className="logo-tm" style={{ color: 'var(--black)' }}>TM</span>
+          </h1>
+          <h1 className="auth-title">ADMIN PANEL</h1>
           <p className="auth-subtitle">Sign in to manage your restaurant</p>
         </div>
 
@@ -65,7 +67,7 @@ const AdminLogin = () => {
           </div>
 
           <button type="submit" className="btn btn-primary btn-lg" style={{ width: '100%' }} disabled={loading}>
-            {loading ? 'Signing in...' : 'Sign In'}
+            {loading ? 'SIGNING IN...' : 'SIGN IN'}
           </button>
         </form>
       </div>

@@ -87,7 +87,7 @@ const Summary = () => {
           contact: phone
         },
         theme: {
-          color: '#e63946'
+          color: '#D42B2B'
         }
       };
 
@@ -112,12 +112,15 @@ const Summary = () => {
     <div className="page-container">
       <div className="builder-container">
         <div className="page-header">
-          <h1 className="page-title">Order Summary</h1>
+          <div className="brand-stamp red" style={{ marginBottom: '1rem' }}>CHECKOUT</div>
+          <h1 className="page-title">ORDER<br />SUMMARY</h1>
           <p className="page-subtitle">Review your custom pizza before checkout</p>
         </div>
 
         <div className="summary-card fade-in">
-          <h3 style={{ marginBottom: '1.5rem', fontSize: '1.25rem' }}>Your Custom Pizza</h3>
+          <h3 style={{ fontFamily: 'var(--font-display)', fontWeight: 700, fontSize: '1rem', letterSpacing: '0.06em', textTransform: 'uppercase', marginBottom: '1.5rem' }}>
+            YOUR CUSTOM PIZZA
+          </h3>
 
           <div className="summary-row">
             <span className="summary-label">Base</span>
@@ -132,11 +135,11 @@ const Summary = () => {
             <span className="summary-value">{builder.cheese?.name} — ₹{builder.cheese?.price}</span>
           </div>
           <div className="summary-row">
-            <span className="summary-label">Vegetables</span>
+            <span className="summary-label">Toppings</span>
             <span className="summary-value">{builder.vegetables.join(', ')}</span>
           </div>
 
-          <div style={{ borderTop: '1px solid var(--border)', margin: '1rem 0', paddingTop: '1rem' }}>
+          <div style={{ borderTop: '3px solid var(--black)', margin: '1rem 0', paddingTop: '1rem' }}>
             <div className="summary-row">
               <span className="summary-label">Subtotal</span>
               <span className="summary-value">₹{subtotal}</span>
@@ -146,14 +149,16 @@ const Summary = () => {
               <span className="summary-value">₹{tax}</span>
             </div>
             <div className="summary-total">
-              <span>Total</span>
+              <span>TOTAL</span>
               <span className="total-price">₹{total}</span>
             </div>
           </div>
         </div>
 
         <div className="summary-card fade-in" style={{ marginTop: '1.5rem' }}>
-          <h3 style={{ marginBottom: '1.5rem', fontSize: '1.25rem' }}>Delivery Details</h3>
+          <h3 style={{ fontFamily: 'var(--font-display)', fontWeight: 700, fontSize: '1rem', letterSpacing: '0.06em', textTransform: 'uppercase', marginBottom: '1.5rem' }}>
+            DELIVERY DETAILS
+          </h3>
 
           <div className="form-group">
             <label className="form-label">Delivery Address</label>
@@ -182,7 +187,7 @@ const Summary = () => {
 
         <div style={{ marginTop: '2rem', display: 'flex', gap: '1rem' }}>
           <button className="btn btn-outline btn-lg" onClick={() => navigate('/build')}>
-            ← Modify Pizza
+            ← MODIFY PIZZA
           </button>
           <button
             className="btn btn-primary btn-lg"
@@ -190,7 +195,7 @@ const Summary = () => {
             onClick={handlePayment}
             disabled={loading || !address.trim() || !phone.trim()}
           >
-            {loading ? 'Processing...' : `Pay ₹${total} — Place Order`}
+            {loading ? 'PROCESSING...' : `PAY ₹${total} — PLACE ORDER`}
           </button>
         </div>
 

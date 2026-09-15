@@ -7,40 +7,69 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="auth-container">
-    <div class="auth-card">
-      <div class="auth-header">
-        <div class="logo">AUTHCORE</div>
-        <p class="subtitle">Create your account</p>
+  <div class="auth-split">
+    <div class="auth-brand">
+      <div class="brand-top">
+        <div class="brand-logo">AUTHCORE</div>
       </div>
+      <div class="brand-block">
+        <div class="brand-label">IDENTITY CREATION</div>
+        <div class="brand-title">CREATE<br>IDENTITY.</div>
+        <div class="brand-number">02</div>
+        <div class="section-steps">
+          <div class="step-item active">
+            <span class="step-num">01</span>
+            <span class="step-label">PROFILE</span>
+          </div>
+          <div class="step-item">
+            <span class="step-num">02</span>
+            <span class="step-label">CREDENTIALS</span>
+          </div>
+          <div class="step-item">
+            <span class="step-num">03</span>
+            <span class="step-label">CONFIRMATION</span>
+          </div>
+        </div>
+      </div>
+      <div class="brand-bottom">&copy; 2026 AUTHCORE</div>
+    </div>
+
+    <div class="auth-form-panel">
+      <div class="form-header">
+        <div class="form-header-label">NEW IDENTITY</div>
+        <div class="form-header-title">REGISTER</div>
+      </div>
+
       <form id="registerForm" class="auth-form" novalidate>
         <div class="form-group">
-          <label for="username">Username</label>
+          <label for="username">USERNAME</label>
           <input type="text" id="username" name="username" placeholder="Choose a username" required autocomplete="username">
         </div>
         <div class="form-group">
-          <label for="email">Email</label>
-          <input type="email" id="email" name="email" placeholder="you@example.com" required autocomplete="email">
+          <label for="email">EMAIL</label>
+          <input type="email" id="email" name="email" placeholder="user@example.com" required autocomplete="email">
         </div>
         <div class="form-group">
-          <label for="password">Password</label>
+          <label for="password">PASSWORD</label>
           <input type="password" id="password" name="password" placeholder="Create a password" required autocomplete="new-password">
           <div class="password-requirements">
-            <span id="reqLength" class="req">Min 8 characters</span>
-            <span id="reqNumber" class="req">At least 1 number</span>
+            <span id="reqLength" class="req">MIN 8 CHARACTERS</span>
+            <span id="reqNumber" class="req">AT LEAST 1 NUMBER</span>
           </div>
         </div>
         <div id="errorMessage" class="error-message" aria-live="polite"></div>
         <button type="submit" class="btn-primary" id="registerBtn">
-          <span class="btn-text">Create Account</span>
+          <span class="btn-text">CREATE ACCOUNT</span>
           <span class="btn-loader hidden"></span>
         </button>
       </form>
+
       <div class="auth-footer">
-        <p>Already have an account? <a href="/">Sign in</a></p>
+        <p>EXISTING IDENTITY? <a href="/">LOGIN</a></p>
       </div>
     </div>
   </div>
+
   <script src="script.js"></script>
   <script>
     const passwordInput = document.getElementById('password');
@@ -65,27 +94,27 @@
       setLoading(btn, true);
 
       if (!username || !email || !password) {
-        errorEl.textContent = 'All fields are required';
+        errorEl.textContent = 'All fields are required.';
         setLoading(btn, false);
         return;
       }
       if (username.length < 2) {
-        errorEl.textContent = 'Username must be at least 2 characters';
+        errorEl.textContent = 'Username must be at least 2 characters.';
         setLoading(btn, false);
         return;
       }
       if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-        errorEl.textContent = 'Please enter a valid email address';
+        errorEl.textContent = 'Please enter a valid email address.';
         setLoading(btn, false);
         return;
       }
       if (password.length < 8) {
-        errorEl.textContent = 'Password must be at least 8 characters';
+        errorEl.textContent = 'Password must be at least 8 characters.';
         setLoading(btn, false);
         return;
       }
       if (!/\d/.test(password)) {
-        errorEl.textContent = 'Password must contain at least one number';
+        errorEl.textContent = 'Password must contain at least one number.';
         setLoading(btn, false);
         return;
       }
@@ -98,13 +127,13 @@
         });
         const data = await res.json();
         if (!res.ok) {
-          errorEl.textContent = data.error || 'Registration failed';
+          errorEl.textContent = data.error || 'Registration failed.';
           setLoading(btn, false);
           return;
         }
         window.location.href = '/dashboard';
       } catch (err) {
-        errorEl.textContent = 'Connection error. Please try again.';
+        errorEl.textContent = 'Connection error.';
         setLoading(btn, false);
       }
     });

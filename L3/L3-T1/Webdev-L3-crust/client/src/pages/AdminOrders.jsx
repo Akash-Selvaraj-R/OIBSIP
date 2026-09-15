@@ -56,7 +56,12 @@ const AdminOrders = () => {
   };
 
   if (loading) {
-    return <div className="loading-container"><div className="spinner"></div></div>;
+    return (
+      <div className="loading-container">
+        <div className="spinner"></div>
+        <div className="loading-text">Loading orders...</div>
+      </div>
+    );
   }
 
   return (
@@ -64,31 +69,34 @@ const AdminOrders = () => {
       <aside className="admin-sidebar">
         <div style={{ marginBottom: '2rem' }}>
           <h2 className="logo" style={{ fontSize: '1.5rem' }}>CRUST<span>.</span></h2>
-          <p style={{ color: 'var(--text-muted)', fontSize: '0.85rem', marginTop: '0.25rem' }}>Admin Panel</p>
+          <p style={{ color: 'rgba(255,255,255,0.3)', fontSize: '0.7rem', marginTop: '0.25rem', fontFamily: 'var(--font-display)', fontWeight: 600, letterSpacing: '0.08em', textTransform: 'uppercase' }}>
+            Admin Panel
+          </p>
         </div>
 
         <nav className="sidebar-nav">
           <Link to="/admin" className={`sidebar-link ${location.pathname === '/admin' ? 'active' : ''}`}>
-            <span>&#128200;</span> Overview
+            <span>↗</span> Overview
           </Link>
           <Link to="/admin/inventory" className={`sidebar-link ${location.pathname === '/admin/inventory' ? 'active' : ''}`}>
-            <span>&#128230;</span> Inventory
+            <span>☰</span> Inventory
           </Link>
           <Link to="/admin/orders" className={`sidebar-link ${location.pathname === '/admin/orders' ? 'active' : ''}`}>
-            <span>&#128196;</span> Orders
+            <span>≡</span> Orders
           </Link>
         </nav>
 
         <div style={{ marginTop: 'auto' }}>
           <button onClick={() => { logout(); navigate('/admin/login'); }} className="sidebar-link" style={{ width: '100%' }}>
-            <span>&#128682;</span> Logout
+            <span>↪</span> Logout
           </button>
         </div>
       </aside>
 
       <main className="admin-content">
         <div className="page-header">
-          <h1 className="page-title">Order Management</h1>
+          <div className="brand-stamp red" style={{ marginBottom: '1rem' }}>ORDER MANAGEMENT</div>
+          <h1 className="page-title">ORDERS</h1>
           <p className="page-subtitle">Manage and update order statuses</p>
         </div>
 
@@ -110,7 +118,7 @@ const AdminOrders = () => {
                 <tr key={order._id}>
                   <td><span className="order-id">#{order._id.slice(-8).toUpperCase()}</span></td>
                   <td>
-                    <div>{order.user?.name || 'N/A'}</div>
+                    <div style={{ fontWeight: 600 }}>{order.user?.name || 'N/A'}</div>
                     <div style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>{order.user?.email}</div>
                   </td>
                   <td style={{ maxWidth: '200px' }}>
@@ -123,10 +131,10 @@ const AdminOrders = () => {
                       <span>{order.items?.map(i => i.name).join(', ')}</span>
                     )}
                   </td>
-                  <td style={{ fontWeight: 700 }}>₹{order.amount}</td>
+                  <td style={{ fontFamily: 'var(--font-display)', fontWeight: 700 }}>₹{order.amount}</td>
                   <td>
-                    <span style={{ color: order.paymentStatus === 'completed' ? 'var(--success)' : 'var(--warning)', fontSize: '0.85rem', fontWeight: 600 }}>
-                      {order.paymentStatus === 'completed' ? 'Paid' : 'Pending'}
+                    <span className={`brand-stamp ${order.paymentStatus === 'completed' ? 'green' : 'yellow'}`}>
+                      {order.paymentStatus === 'completed' ? 'PAID' : 'PENDING'}
                     </span>
                   </td>
                   <td>
@@ -139,8 +147,9 @@ const AdminOrders = () => {
                       <button
                         className="btn btn-ghost btn-sm"
                         onClick={() => setSelectedOrder(order)}
+                        style={{ color: 'var(--text-secondary)' }}
                       >
-                        View
+                        VIEW
                       </button>
                       {getNextStatus(order.status) && (
                         <button
@@ -160,18 +169,18 @@ const AdminOrders = () => {
 
         {orders.length === 0 && (
           <div className="empty-state">
-            <div className="empty-icon">&#128196;</div>
-            <h3 className="empty-title">No orders yet</h3>
+            <div className="empty-icon">📦</div>
+            <h3 className="empty-title">NO ORDERS YET</h3>
             <p>Orders will appear here when customers place them</p>
           </div>
         )}
 
         {selectedOrder && (
-          <div className="modal-overlay" onClick={() => setSelectedOrder(null)}>
+          <div className="modal-overlay" onClick={() => setSelectedOrder(null)} role="dialog" aria-modal="true" aria-label="Order details">
             <div className="modal" onClick={(e) => e.stopPropagation()}>
               <div className="modal-header">
-                <h3 className="modal-title">Order #{selectedOrder._id.slice(-8).toUpperCase()}</h3>
-                <button className="modal-close" onClick={() => setSelectedOrder(null)}>&times;</button>
+                <h3 className="modal-title">ORDER #{selectedOrder._id.slice(-8).toUpperCase()}</h3>
+                <button className="modal-close" onClick={() => setSelectedOrder(null)} aria-label="Close dialog">&times;</button>
               </div>
               <div className="modal-body">
                 <div className="summary-row">
@@ -193,7 +202,9 @@ const AdminOrders = () => {
 
                 {selectedOrder.customPizza && (
                   <>
-                    <h4 style={{ margin: '1rem 0 0.5rem', color: 'var(--text-secondary)' }}>Custom Pizza</h4>
+                    <h4 style={{ margin: '1rem 0 0.5rem', fontFamily: 'var(--font-display)', fontWeight: 700, fontSize: '0.75rem', letterSpacing: '0.06em', textTransform: 'uppercase', color: 'var(--text-secondary)' }}>
+                      CUSTOM PIZZA
+                    </h4>
                     <div className="summary-row">
                       <span className="summary-label">Base</span>
                       <span className="summary-value">{selectedOrder.customPizza.base}</span>
@@ -207,7 +218,7 @@ const AdminOrders = () => {
                       <span className="summary-value">{selectedOrder.customPizza.cheese}</span>
                     </div>
                     <div className="summary-row">
-                      <span className="summary-label">Vegetables</span>
+                      <span className="summary-label">Toppings</span>
                       <span className="summary-value">{selectedOrder.customPizza.vegetables?.join(', ')}</span>
                     </div>
                   </>
@@ -215,13 +226,13 @@ const AdminOrders = () => {
 
                 <div className="summary-row" style={{ marginTop: '1rem' }}>
                   <span className="summary-label">Amount</span>
-                  <span className="summary-value" style={{ fontWeight: 700, fontSize: '1.25rem', color: 'var(--primary)' }}>₹{selectedOrder.amount}</span>
+                  <span className="summary-value" style={{ fontFamily: 'var(--font-display)', fontWeight: 700, fontSize: '1.25rem', color: 'var(--red)' }}>₹{selectedOrder.amount}</span>
                 </div>
 
                 <div className="summary-row">
                   <span className="summary-label">Payment</span>
-                  <span className="summary-value" style={{ color: selectedOrder.paymentStatus === 'completed' ? 'var(--success)' : 'var(--warning)' }}>
-                    {selectedOrder.paymentStatus === 'completed' ? 'Paid' : 'Pending'}
+                  <span className={`brand-stamp ${selectedOrder.paymentStatus === 'completed' ? 'green' : 'yellow'}`}>
+                    {selectedOrder.paymentStatus === 'completed' ? 'PAID' : 'PENDING'}
                   </span>
                 </div>
 
@@ -241,10 +252,10 @@ const AdminOrders = () => {
                       setSelectedOrder(prev => ({ ...prev, status: getNextStatus(prev.status) }));
                     }}
                   >
-                    Mark as "{getNextStatus(selectedOrder.status)}"
+                    MARK AS "{getNextStatus(selectedOrder.status)}"
                   </button>
                 )}
-                <button className="btn btn-outline" onClick={() => setSelectedOrder(null)}>Close</button>
+                <button className="btn btn-outline" onClick={() => setSelectedOrder(null)}>CLOSE</button>
               </div>
             </div>
           </div>

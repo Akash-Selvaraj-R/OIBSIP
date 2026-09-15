@@ -7,32 +7,48 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="auth-container">
-    <div class="auth-card">
-      <div class="auth-header">
-        <div class="logo">AUTHCORE</div>
-        <p class="subtitle">Sign in to your account</p>
+  <div class="auth-split">
+    <div class="auth-brand">
+      <div class="brand-top">
+        <div class="brand-logo">AUTHCORE</div>
       </div>
+      <div class="brand-block">
+        <div class="brand-label">IDENTITY INFRASTRUCTURE</div>
+        <div class="brand-title">SECURE<br>ACCESS.</div>
+        <div class="brand-number">01</div>
+        <div class="brand-statement">SECURE ACCESS.<br>NOT DECORATION.</div>
+      </div>
+      <div class="brand-bottom">&copy; 2026 AUTHCORE</div>
+    </div>
+
+    <div class="auth-form-panel">
+      <div class="form-header">
+        <div class="form-header-label">ENTER CREDENTIALS</div>
+        <div class="form-header-title">LOGIN</div>
+      </div>
+
       <form id="loginForm" class="auth-form" novalidate>
         <div class="form-group">
-          <label for="email">Email</label>
-          <input type="email" id="email" name="email" placeholder="you@example.com" required autocomplete="email">
+          <label for="email">EMAIL</label>
+          <input type="email" id="email" name="email" placeholder="user@example.com" required autocomplete="email">
         </div>
         <div class="form-group">
-          <label for="password">Password</label>
-          <input type="password" id="password" name="password" placeholder="Enter your password" required autocomplete="current-password">
+          <label for="password">PASSWORD</label>
+          <input type="password" id="password" name="password" placeholder="Enter password" required autocomplete="current-password">
         </div>
         <div id="errorMessage" class="error-message" aria-live="polite"></div>
         <button type="submit" class="btn-primary" id="loginBtn">
-          <span class="btn-text">Sign In</span>
+          <span class="btn-text">AUTHENTICATE</span>
           <span class="btn-loader hidden"></span>
         </button>
       </form>
+
       <div class="auth-footer">
-        <p>Don't have an account? <a href="/register">Create one</a></p>
+        <p>NO IDENTITY? <a href="/register">CREATE ONE</a></p>
       </div>
     </div>
   </div>
+
   <script src="script.js"></script>
   <script>
     document.getElementById('loginForm').addEventListener('submit', async function(e) {
@@ -46,7 +62,7 @@
       setLoading(btn, true);
 
       if (!email || !password) {
-        errorEl.textContent = 'Please fill in all fields';
+        errorEl.textContent = 'All fields are required.';
         setLoading(btn, false);
         return;
       }
@@ -59,13 +75,13 @@
         });
         const data = await res.json();
         if (!res.ok) {
-          errorEl.textContent = data.error || 'Login failed';
+          errorEl.textContent = data.error || 'Login failed.';
           setLoading(btn, false);
           return;
         }
         window.location.href = '/dashboard';
       } catch (err) {
-        errorEl.textContent = 'Connection error. Please try again.';
+        errorEl.textContent = 'Connection error.';
         setLoading(btn, false);
       }
     });

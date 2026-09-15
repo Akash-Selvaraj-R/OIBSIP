@@ -1,6 +1,5 @@
 /* ============================================
-   THE LEGACY — Albert Einstein Tribute
-   OASIS INFOBYTE SIP — Level 2 Task 2
+   THE LEGACY — ANTI-DESIGN EDITORIAL
    Scroll Reveal & Interactions
    ============================================ */
 
@@ -13,7 +12,6 @@
     if (!elements.length) return;
 
     if (!('IntersectionObserver' in window)) {
-      // Fallback: show all immediately
       elements.forEach(function (el) {
         el.classList.add('visible');
       });
@@ -46,6 +44,10 @@
     var heroImage = document.querySelector('.hero__image');
     if (!hero || !heroImage) return;
 
+    // Respect prefers-reduced-motion
+    var prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    if (prefersReducedMotion.matches) return;
+
     var ticking = false;
 
     function updateParallax() {
@@ -70,9 +72,59 @@
     );
   }
 
+  // Nav background on scroll
+  function initNavScroll() {
+    var nav = document.querySelector('.nav');
+    if (!nav) return;
+
+    var ticking = false;
+
+    function updateNav() {
+      var scrollY = window.pageYOffset;
+      if (scrollY > 100) {
+        nav.style.background = 'rgba(245, 240, 232, 0.95)';
+        nav.style.backdropFilter = 'blur(10px)';
+        nav.style.webkitBackdropFilter = 'blur(10px)';
+      } else {
+        nav.style.background = 'var(--color-bone)';
+        nav.style.backdropFilter = 'none';
+        nav.style.webkitBackdropFilter = 'none';
+      }
+      ticking = false;
+    }
+
+    window.addEventListener(
+      'scroll',
+      function () {
+        if (!ticking) {
+          requestAnimationFrame(updateNav);
+          ticking = true;
+        }
+      },
+      { passive: true }
+    );
+  }
+
+  // Smooth scroll for nav links
+  function initSmoothScroll() {
+    var links = document.querySelectorAll('.nav__links a');
+    links.forEach(function (link) {
+      link.addEventListener('click', function (e) {
+        e.preventDefault();
+        var targetId = this.getAttribute('href');
+        var target = document.querySelector(targetId);
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+  }
+
   // Initialize on DOM ready
   document.addEventListener('DOMContentLoaded', function () {
     initReveal();
     initHeroParallax();
+    initNavScroll();
+    initSmoothScroll();
   });
 })();

@@ -30,27 +30,33 @@ const VerifyEmail = () => {
         {status === 'verifying' && (
           <>
             <div className="spinner" style={{ margin: '0 auto 1.5rem' }}></div>
-            <h2>Verifying your email...</h2>
+            <h2 style={{ fontFamily: 'var(--font-display)', fontWeight: 700, textTransform: 'uppercase' }}>
+              VERIFYING YOUR EMAIL...
+            </h2>
           </>
         )}
         {status === 'success' && (
           <>
-            <div style={{ fontSize: '4rem', marginBottom: '1rem' }}>&#10003;</div>
-            <h2 style={{ marginBottom: '1rem' }}>Email Verified!</h2>
+            <div style={{ fontSize: '4rem', marginBottom: '1rem', color: 'var(--green)' }}>✓</div>
+            <h2 style={{ fontFamily: 'var(--font-display)', fontWeight: 700, textTransform: 'uppercase', marginBottom: '1rem' }}>
+              EMAIL VERIFIED!
+            </h2>
             <p style={{ color: 'var(--text-secondary)', marginBottom: '2rem' }}>
               Your email has been verified. You can now use all features.
             </p>
-            <Link to="/dashboard" className="btn btn-primary btn-lg">Go to Dashboard</Link>
+            <Link to="/dashboard" className="btn btn-primary btn-lg">GO TO DASHBOARD →</Link>
           </>
         )}
         {status === 'error' && (
           <>
-            <div style={{ fontSize: '4rem', marginBottom: '1rem', color: 'var(--danger)' }}>&#10007;</div>
-            <h2 style={{ marginBottom: '1rem' }}>Verification Failed</h2>
+            <div style={{ fontSize: '4rem', marginBottom: '1rem', color: 'var(--danger)' }}>✕</div>
+            <h2 style={{ fontFamily: 'var(--font-display)', fontWeight: 700, textTransform: 'uppercase', marginBottom: '1rem' }}>
+              VERIFICATION FAILED
+            </h2>
             <p style={{ color: 'var(--text-secondary)', marginBottom: '2rem' }}>
               The verification link is invalid or has expired.
             </p>
-            <Link to="/login" className="btn btn-primary btn-lg">Go to Login</Link>
+            <Link to="/login" className="btn btn-primary btn-lg">GO TO LOGIN →</Link>
           </>
         )}
       </div>

@@ -7,26 +7,26 @@
     <title>Akash Selvaraj R — Portfolio</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
     <header class="header" role="banner">
         <nav class="nav container" role="navigation" aria-label="Main navigation">
-            <a href="#home" class="nav__logo">AR</a>
+            <a href="#home" class="nav__logo">ASR</a>
             <button class="nav__toggle" aria-label="Toggle navigation" aria-expanded="false">
                 <span class="nav__toggle-bar"></span>
                 <span class="nav__toggle-bar"></span>
                 <span class="nav__toggle-bar"></span>
             </button>
             <ul class="nav__menu" id="nav-menu">
-                <li><a href="#home" class="nav__link active">Home</a></li>
-                <li><a href="#about" class="nav__link">About</a></li>
-                <li><a href="#skills" class="nav__link">Skills</a></li>
-                <li><a href="#projects" class="nav__link">Projects</a></li>
-                <li><a href="#contact" class="nav__link">Contact</a></li>
+                <li><a href="#about" class="nav__link">ABOUT</a></li>
+                <li><a href="#work" class="nav__link">WORK</a></li>
+                <li><a href="#skills" class="nav__link">SKILLS</a></li>
+                <li><a href="#contact" class="nav__link">CONTACT</a></li>
             </ul>
+            <a href="#contact" class="nav__cta">LET'S BUILD &rarr;</a>
         </nav>
     </header>
 
@@ -36,19 +36,68 @@
         <section id="home" class="hero" aria-label="Introduction">
             <div class="container hero__inner">
                 <div class="hero__content">
-                    <p class="hero__greeting">Hello, I'm</p>
-                    <h1 class="hero__name">Akash Selvaraj R</h1>
-                    <p class="hero__role">B.Tech CSE Student &middot; Full-Stack Developer &middot; AI Builder</p>
-                    <p class="hero__description">
-                        Building practical web applications and AI-powered products with a focus on clean engineering, useful experiences, and continuous learning.
+                    <div class="hero__label">
+                        <span class="hero__label-num">01</span>
+                        <span class="hero__label-divider">/</span>
+                        <span class="hero__label-text">INTRODUCTION</span>
+                    </div>
+                    <h1 class="hero__name">
+                        <span class="hero__name-line">AKASH</span>
+                        <span class="hero__name-line">SELVARAJ</span>
+                        <span class="hero__name-line hero__name-accent">R.</span>
+                    </h1>
+                    <div class="hero__meta">
+                        <p class="hero__meta-line">B.TECH CSE</p>
+                        <p class="hero__meta-line">FULL-STACK DEVELOPER</p>
+                        <p class="hero__meta-line">AI &amp; WEB DEVELOPER</p>
+                    </div>
+                    <p class="hero__statement">
+                        I BUILD PRODUCTS<br>
+                        WHERE SOFTWARE,<br>
+                        AI AND DESIGN<br>
+                        MEET.
                     </p>
                     <div class="hero__actions">
-                        <a href="#projects" class="btn btn--primary">View Projects</a>
-                        <a href="#contact" class="btn btn--secondary">Contact Me</a>
+                        <a href="#work" class="btn btn--primary">VIEW MY WORK &rarr;</a>
+                        <a href="#contact" class="btn btn--secondary">CONTACT ME</a>
                     </div>
                 </div>
-                <div class="hero__avatar">
-                    <img src="assets/avatar-placeholder.svg" alt="Photo of Akash Selvaraj R" width="240" height="240">
+                <div class="hero__visual">
+                    <div class="hero__visual-block">
+                        <div class="hero__visual-label">ASR</div>
+                        <div class="hero__visual-number">01</div>
+                        <div class="hero__visual-text">BUILD</div>
+                        <div class="hero__visual-grid">
+                            <div class="hero__visual-grid-line"></div>
+                            <div class="hero__visual-grid-line"></div>
+                            <div class="hero__visual-grid-line"></div>
+                            <div class="hero__visual-grid-line"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Developer Identity Block -->
+        <section class="identity" aria-label="Developer identity">
+            <div class="container">
+                <div class="identity__grid">
+                    <div class="identity__item">
+                        <span class="identity__label">ROLE</span>
+                        <span class="identity__value">FULL-STACK / AI</span>
+                    </div>
+                    <div class="identity__item">
+                        <span class="identity__label">LOCATION</span>
+                        <span class="identity__value">CHENNAI, INDIA</span>
+                    </div>
+                    <div class="identity__item">
+                        <span class="identity__label">STACK</span>
+                        <span class="identity__value">REACT / TYPESCRIPT / PYTHON</span>
+                    </div>
+                    <div class="identity__item">
+                        <span class="identity__label">FOCUS</span>
+                        <span class="identity__value">AI PRODUCTS / WEB SYSTEMS</span>
+                    </div>
                 </div>
             </div>
         </section>
@@ -56,14 +105,29 @@
         <!-- About Section -->
         <section id="about" class="about" aria-label="About me">
             <div class="container">
-                <h2 class="section__title">About Me</h2>
-                <div class="about__content">
-                    <p>
-                        Akash Selvaraj R is a B.Tech Computer Science and Engineering student at SRM Institute of Science and Technology. He is interested in full-stack development, artificial intelligence, and building practical software products.
-                    </p>
-                    <p>
-                        His interests include turning ideas into functional, user-focused applications while continuously improving his engineering skills. He is passionate about leveraging technology to solve real-world problems and is always looking for opportunities to learn and grow.
-                    </p>
+                <div class="about__header">
+                    <div class="section__label">
+                        <span class="section__label-num">02</span>
+                        <span class="section__label-divider">/</span>
+                        <span class="section__label-text">ABOUT</span>
+                    </div>
+                    <h2 class="about__title">WHO I AM.</h2>
+                </div>
+                <div class="about__grid">
+                    <div class="about__statement">
+                        <p>I DON'T JUST</p>
+                        <p>WRITE CODE.</p>
+                        <p>I BUILD</p>
+                        <p>SYSTEMS.</p>
+                    </div>
+                    <div class="about__bio">
+                        <p>
+                            Akash Selvaraj R is a B.Tech Computer Science and Engineering student at SRM Institute of Science and Technology. He is interested in full-stack development, artificial intelligence, and building practical software products.
+                        </p>
+                        <p>
+                            His interests include turning ideas into functional, user-focused applications while continuously improving his engineering skills. He is passionate about leveraging technology to solve real-world problems and is always looking for opportunities to learn and grow.
+                        </p>
+                    </div>
                 </div>
             </div>
         </section>
@@ -71,57 +135,79 @@
         <!-- Skills Section -->
         <section id="skills" class="skills" aria-label="Technical skills">
             <div class="container">
-                <h2 class="section__title">Skills</h2>
+                <div class="skills__header">
+                    <div class="section__label">
+                        <span class="section__label-num">03</span>
+                        <span class="section__label-divider">/</span>
+                        <span class="section__label-text">CAPABILITIES</span>
+                    </div>
+                    <h2 class="skills__title">DEVELOPER<br>CAPABILITY GRID.</h2>
+                </div>
                 <div class="skills__grid">
 
-                    <div class="skills__category">
-                        <h3 class="skills__category-title">Languages</h3>
-                        <div class="skills__chips">
-                            <span class="skill-chip">Python</span>
-                            <span class="skill-chip">Java</span>
-                            <span class="skill-chip">JavaScript</span>
-                            <span class="skill-chip">TypeScript</span>
-                            <span class="skill-chip">HTML5</span>
-                            <span class="skill-chip">CSS3</span>
+                    <div class="skills__block">
+                        <div class="skills__block-header">
+                            <span class="skills__block-num">01</span>
+                            <h3 class="skills__block-title">FRONTEND</h3>
                         </div>
+                        <ul class="skills__list">
+                            <li>HTML5</li>
+                            <li>CSS3</li>
+                            <li>JAVASCRIPT</li>
+                            <li>REACT</li>
+                            <li>TYPESCRIPT</li>
+                        </ul>
                     </div>
 
-                    <div class="skills__category">
-                        <h3 class="skills__category-title">Frontend</h3>
-                        <div class="skills__chips">
-                            <span class="skill-chip">React</span>
-                            <span class="skill-chip">Vite</span>
-                            <span class="skill-chip">Responsive Web Design</span>
+                    <div class="skills__block">
+                        <div class="skills__block-header">
+                            <span class="skills__block-num">02</span>
+                            <h3 class="skills__block-title">BACKEND</h3>
                         </div>
+                        <ul class="skills__list">
+                            <li>PYTHON</li>
+                            <li>NODE.JS</li>
+                            <li>FASTAPI</li>
+                            <li>EXPRESS</li>
+                        </ul>
                     </div>
 
-                    <div class="skills__category">
-                        <h3 class="skills__category-title">Backend</h3>
-                        <div class="skills__chips">
-                            <span class="skill-chip">FastAPI</span>
-                            <span class="skill-chip">Node.js</span>
-                            <span class="skill-chip">REST APIs</span>
+                    <div class="skills__block">
+                        <div class="skills__block-header">
+                            <span class="skills__block-num">03</span>
+                            <h3 class="skills__block-title">DATA</h3>
                         </div>
+                        <ul class="skills__list">
+                            <li>MONGODB</li>
+                            <li>SQL</li>
+                            <li>REST APIS</li>
+                        </ul>
                     </div>
 
-                    <div class="skills__category">
-                        <h3 class="skills__category-title">AI / Development</h3>
-                        <div class="skills__chips">
-                            <span class="skill-chip">AI Application Development</span>
-                            <span class="skill-chip">Generative AI</span>
-                            <span class="skill-chip">LangChain</span>
-                            <span class="skill-chip">Automation</span>
+                    <div class="skills__block">
+                        <div class="skills__block-header">
+                            <span class="skills__block-num">04</span>
+                            <h3 class="skills__block-title">AI</h3>
                         </div>
+                        <ul class="skills__list">
+                            <li>AI / ML</li>
+                            <li>GENAI</li>
+                            <li>LLM SYSTEMS</li>
+                            <li>LANGCHAIN</li>
+                        </ul>
                     </div>
 
-                    <div class="skills__category">
-                        <h3 class="skills__category-title">Tools</h3>
-                        <div class="skills__chips">
-                            <span class="skill-chip">Git</span>
-                            <span class="skill-chip">GitHub</span>
-                            <span class="skill-chip">Linux</span>
-                            <span class="skill-chip">VS Code</span>
+                    <div class="skills__block">
+                        <div class="skills__block-header">
+                            <span class="skills__block-num">05</span>
+                            <h3 class="skills__block-title">TOOLS</h3>
                         </div>
+                        <ul class="skills__list">
+                            <li>GIT</li>
+                            <li>GITHUB</li>
+                            <li>LINUX</li>
+                            <li>VS CODE</li>
+                        </ul>
                     </div>
 
                 </div>
@@ -129,56 +215,71 @@
         </section>
 
         <!-- Projects Section -->
-        <section id="projects" class="projects" aria-label="Projects">
+        <section id="work" class="projects" aria-label="Projects">
             <div class="container">
-                <h2 class="section__title">Projects</h2>
-                <div class="projects__grid">
+                <div class="projects__header">
+                    <div class="section__label">
+                        <span class="section__label-num">04</span>
+                        <span class="section__label-divider">/</span>
+                        <span class="section__label-text">SELECTED WORK</span>
+                    </div>
+                    <h2 class="projects__title">THINGS<br>I'VE<br>BUILT.</h2>
+                </div>
+                <div class="projects__list">
 
-                    <article class="project-card">
-                        <div class="project-card__header">
-                            <span class="project-card__number">01</span>
-                            <h3 class="project-card__title">DevPilot</h3>
-                        </div>
-                        <p class="project-card__description">
-                            An AI-powered software engineering workspace designed to take development tasks through analysis, planning, implementation, testing, debugging, and delivery.
-                        </p>
-                        <div class="project-card__tags">
-                            <span class="tag">React</span>
-                            <span class="tag">TypeScript</span>
-                            <span class="tag">FastAPI</span>
-                            <span class="tag">Python</span>
-                            <span class="tag">AI</span>
-                            <span class="tag">SSE</span>
-                        </div>
-                        <div class="project-card__actions">
-                            <a href="https://github.com/Akash-Selvaraj-R/devpilot" target="_blank" rel="noopener noreferrer" class="btn btn--card">
-                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
-                                View on GitHub
-                            </a>
+                    <article class="project-card project-card--feature">
+                        <div class="project-card__accent"></div>
+                        <div class="project-card__content">
+                            <div class="project-card__top">
+                                <span class="project-card__number">01</span>
+                                <h3 class="project-card__title">DEV<br>PILOT</h3>
+                                <p class="project-card__subtitle">AI SOFTWARE ENGINEER</p>
+                            </div>
+                            <p class="project-card__description">
+                                An AI-powered software engineering workspace designed to take development tasks through analysis, planning, implementation, testing, debugging, and delivery.
+                            </p>
+                            <div class="project-card__tags">
+                                <span class="tag">React</span>
+                                <span class="tag">TypeScript</span>
+                                <span class="tag">FastAPI</span>
+                                <span class="tag">Python</span>
+                                <span class="tag">SSE</span>
+                            </div>
+                            <div class="project-card__actions">
+                                <a href="https://github.com/Akash-Selvaraj-R/devpilot" target="_blank" rel="noopener noreferrer" class="btn btn--card">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                                    VIEW PROJECT &rarr;
+                                </a>
+                                <a href="https://github.com/Akash-Selvaraj-R/devpilot" target="_blank" rel="noopener noreferrer" class="btn btn--card">VIEW SOURCE &rarr;</a>
+                            </div>
                         </div>
                     </article>
 
-                    <article class="project-card">
-                        <div class="project-card__header">
-                            <span class="project-card__number">02</span>
-                            <h3 class="project-card__title">BIGMIND</h3>
-                        </div>
-                        <p class="project-card__description">
-                            An organizational intelligence platform that transforms operational signals into insights, predictions, simulations, and actionable recommendations with human oversight.
-                        </p>
-                        <div class="project-card__tags">
-                            <span class="tag">React</span>
-                            <span class="tag">TypeScript</span>
-                            <span class="tag">FastAPI</span>
-                            <span class="tag">Python</span>
-                            <span class="tag">AI</span>
-                            <span class="tag">React Flow</span>
-                        </div>
-                        <div class="project-card__actions">
-                            <a href="https://github.com/Akash-Selvaraj-R/BIGMIND" target="_blank" rel="noopener noreferrer" class="btn btn--card">
-                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
-                                View on GitHub
-                            </a>
+                    <article class="project-card project-card--feature project-card--alt">
+                        <div class="project-card__accent project-card__accent--yellow"></div>
+                        <div class="project-card__content">
+                            <div class="project-card__top">
+                                <span class="project-card__number">02</span>
+                                <h3 class="project-card__title">BIG<br>MIND</h3>
+                                <p class="project-card__subtitle">ORGANIZATIONAL INTELLIGENCE</p>
+                            </div>
+                            <p class="project-card__description">
+                                An organizational intelligence platform that transforms operational signals into insights, predictions, simulations, and actionable recommendations with human oversight.
+                            </p>
+                            <div class="project-card__tags">
+                                <span class="tag">React</span>
+                                <span class="tag">TypeScript</span>
+                                <span class="tag">FastAPI</span>
+                                <span class="tag">Python</span>
+                                <span class="tag">React Flow</span>
+                            </div>
+                            <div class="project-card__actions">
+                                <a href="https://github.com/Akash-Selvaraj-R/BIGMIND" target="_blank" rel="noopener noreferrer" class="btn btn--card">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                                    VIEW PROJECT &rarr;
+                                </a>
+                                <a href="https://github.com/Akash-Selvaraj-R/BIGMIND" target="_blank" rel="noopener noreferrer" class="btn btn--card">VIEW SOURCE &rarr;</a>
+                            </div>
                         </div>
                     </article>
 
@@ -189,26 +290,30 @@
         <!-- Contact Section -->
         <section id="contact" class="contact" aria-label="Contact">
             <div class="container">
-                <h2 class="section__title">Get in Touch</h2>
-                <p class="contact__subtitle">
-                    Have a question or want to work together? Feel free to reach out.
-                </p>
-                <div class="contact__info">
-                    <div class="contact__card">
-                        <h3 class="contact__name">Akash Selvaraj R</h3>
-                        <p class="contact__role">B.Tech CSE &middot; Full-Stack Developer &middot; AI Builder</p>
-                        <a href="mailto:your.email@example.com" class="contact__email">your.email@example.com</a>
+                <div class="contact__header">
+                    <div class="section__label section__label--light">
+                        <span class="section__label-num">05</span>
+                        <span class="section__label-divider">/</span>
+                        <span class="section__label-text">CONTACT</span>
                     </div>
-                    <div class="contact__links">
-                        <a href="https://www.linkedin.com/in/r-akash-selvaraj-61882b291" target="_blank" rel="noopener noreferrer" class="contact__link-item">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
-                            LinkedIn
-                        </a>
-                        <a href="https://github.com/Akash-Selvaraj-R" target="_blank" rel="noopener noreferrer" class="contact__link-item">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
-                            GitHub
-                        </a>
-                    </div>
+                    <h2 class="contact__title">LET'S<br>BUILD<br>SOMETHING<br>USEFUL.</h2>
+                </div>
+                <div class="contact__links">
+                    <a href="mailto:your.email@example.com" class="contact__link-block">
+                        <span class="contact__link-label">EMAIL</span>
+                        <span class="contact__link-value">your.email@example.com</span>
+                        <span class="contact__link-arrow">&rarr;</span>
+                    </a>
+                    <a href="https://github.com/Akash-Selvaraj-R" target="_blank" rel="noopener noreferrer" class="contact__link-block">
+                        <span class="contact__link-label">GITHUB</span>
+                        <span class="contact__link-value">Akash-Selvaraj-R</span>
+                        <span class="contact__link-arrow">&rarr;</span>
+                    </a>
+                    <a href="https://www.linkedin.com/in/r-akash-selvaraj-61882b291" target="_blank" rel="noopener noreferrer" class="contact__link-block">
+                        <span class="contact__link-label">LINKEDIN</span>
+                        <span class="contact__link-value">r-akash-selvaraj</span>
+                        <span class="contact__link-arrow">&rarr;</span>
+                    </a>
                 </div>
             </div>
         </section>
@@ -219,8 +324,8 @@
     <footer class="footer" role="contentinfo">
         <div class="container footer__inner">
             <div class="footer__brand">
-                <p class="footer__name">Akash Selvaraj R</p>
-                <p class="footer__tagline">B.Tech CSE &middot; Full-Stack Developer &middot; AI Builder</p>
+                <p class="footer__name">AKASH SELVARAJ R.</p>
+                <p class="footer__tagline">FULL-STACK &times; AI &times; WEB</p>
             </div>
             <div class="footer__social">
                 <a href="https://github.com/Akash-Selvaraj-R" target="_blank" rel="noopener noreferrer" aria-label="GitHub profile">
@@ -230,7 +335,7 @@
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
                 </a>
             </div>
-            <p class="footer__copy">&copy; 2026 Akash Selvaraj R. All rights reserved.</p>
+            <p class="footer__copy">&copy; 2026</p>
         </div>
     </footer>
 

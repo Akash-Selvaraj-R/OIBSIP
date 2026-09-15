@@ -49,7 +49,12 @@ const AdminInventory = () => {
   const filteredInventory = filter === 'all' ? inventory : inventory.filter(i => i.category === filter);
 
   if (loading) {
-    return <div className="loading-container"><div className="spinner"></div></div>;
+    return (
+      <div className="loading-container">
+        <div className="spinner"></div>
+        <div className="loading-text">Loading inventory...</div>
+      </div>
+    );
   }
 
   return (
@@ -57,31 +62,34 @@ const AdminInventory = () => {
       <aside className="admin-sidebar">
         <div style={{ marginBottom: '2rem' }}>
           <h2 className="logo" style={{ fontSize: '1.5rem' }}>CRUST<span>.</span></h2>
-          <p style={{ color: 'var(--text-muted)', fontSize: '0.85rem', marginTop: '0.25rem' }}>Admin Panel</p>
+          <p style={{ color: 'rgba(255,255,255,0.3)', fontSize: '0.7rem', marginTop: '0.25rem', fontFamily: 'var(--font-display)', fontWeight: 600, letterSpacing: '0.08em', textTransform: 'uppercase' }}>
+            Admin Panel
+          </p>
         </div>
 
         <nav className="sidebar-nav">
           <Link to="/admin" className={`sidebar-link ${location.pathname === '/admin' ? 'active' : ''}`}>
-            <span>&#128200;</span> Overview
+            <span>↗</span> Overview
           </Link>
           <Link to="/admin/inventory" className={`sidebar-link ${location.pathname === '/admin/inventory' ? 'active' : ''}`}>
-            <span>&#128230;</span> Inventory
+            <span>☰</span> Inventory
           </Link>
           <Link to="/admin/orders" className={`sidebar-link ${location.pathname === '/admin/orders' ? 'active' : ''}`}>
-            <span>&#128196;</span> Orders
+            <span>≡</span> Orders
           </Link>
         </nav>
 
         <div style={{ marginTop: 'auto' }}>
           <button onClick={() => { logout(); navigate('/admin/login'); }} className="sidebar-link" style={{ width: '100%' }}>
-            <span>&#128682;</span> Logout
+            <span>↪</span> Logout
           </button>
         </div>
       </aside>
 
       <main className="admin-content">
         <div className="page-header">
-          <h1 className="page-title">Inventory Management</h1>
+          <div className="brand-stamp yellow" style={{ marginBottom: '1rem' }}>KITCHEN CONTROL</div>
+          <h1 className="page-title">INVENTORY</h1>
           <p className="page-subtitle">Manage your stock levels</p>
         </div>
 
@@ -92,7 +100,7 @@ const AdminInventory = () => {
               className={`tab ${filter === cat ? 'active' : ''}`}
               onClick={() => setFilter(cat)}
             >
-              {cat === 'all' ? 'All' : cat.charAt(0).toUpperCase() + cat.slice(1)}
+              {cat === 'all' ? 'ALL' : cat.toUpperCase()}
             </button>
           ))}
         </div>
@@ -112,8 +120,8 @@ const AdminInventory = () => {
             <tbody>
               {filteredInventory.map((item) => (
                 <tr key={item._id}>
-                  <td style={{ fontWeight: 600 }}>{item.name}</td>
-                  <td style={{ textTransform: 'capitalize' }}>{item.category}</td>
+                  <td style={{ fontFamily: 'var(--font-display)', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.02em' }}>{item.name}</td>
+                  <td style={{ fontFamily: 'var(--font-display)', fontWeight: 600, fontSize: '0.8rem', letterSpacing: '0.04em', textTransform: 'uppercase' }}>{item.category}</td>
                   <td>
                     {editingId === item._id ? (
                       <div className="stock-controls">
@@ -121,17 +129,24 @@ const AdminInventory = () => {
                         <input
                           type="number"
                           className="form-input"
-                          style={{ width: '80px', textAlign: 'center', padding: '0.5rem' }}
+                          style={{ width: '80px', textAlign: 'center', padding: '0.4rem' }}
                           value={editValue}
                           onChange={(e) => setEditValue(parseInt(e.target.value) || 0)}
                           min={0}
                         />
                         <button className="stock-btn" onClick={() => setEditValue(editValue + 1)}>+</button>
-                        <button className="btn btn-success btn-sm" onClick={() => handleStockUpdate(item._id, editValue)}>Save</button>
-                        <button className="btn btn-ghost btn-sm" onClick={() => setEditingId(null)}>Cancel</button>
+                        <button className="btn btn-success btn-sm" onClick={() => handleStockUpdate(item._id, editValue)}>SAVE</button>
+                        <button className="btn btn-ghost btn-sm" onClick={() => setEditingId(null)} style={{ color: 'var(--text-secondary)' }}>CANCEL</button>
                       </div>
                     ) : (
-                      <span className="stock-badge" style={{ cursor: 'pointer' }} onClick={() => { setEditingId(item._id); setEditValue(item.stock); }}>
+                      <span
+                        className="stock-badge"
+                        style={{ cursor: 'pointer' }}
+                        onClick={() => { setEditingId(item._id); setEditValue(item.stock); }}
+                        role="button"
+                        tabIndex={0}
+                        onKeyDown={(e) => { if (e.key === 'Enter') { setEditingId(item._id); setEditValue(item.stock); } }}
+                      >
                         {item.stock}
                       </span>
                     )}
@@ -139,7 +154,7 @@ const AdminInventory = () => {
                   <td>{item.threshold}</td>
                   <td>
                     <span className={`stock-badge ${getStockBadge(item.stock, item.threshold)}`}>
-                      {item.stock <= item.threshold * 0.5 ? 'Critical' : item.stock <= item.threshold ? 'Low' : 'OK'}
+                      {item.stock <= item.threshold * 0.5 ? 'CRITICAL' : item.stock <= item.threshold ? 'LOW' : 'OK'}
                     </span>
                   </td>
                   <td>
@@ -163,7 +178,7 @@ const AdminInventory = () => {
 
         {filteredInventory.length === 0 && (
           <div className="empty-state">
-            <h3 className="empty-title">No inventory items</h3>
+            <h3 className="empty-title">NO INVENTORY ITEMS</h3>
           </div>
         )}
       </main>

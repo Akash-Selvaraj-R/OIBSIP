@@ -26,18 +26,20 @@ const ForgotPassword = () => {
     <div className="auth-container">
       <div className="auth-card fade-in">
         <div className="auth-header">
-          <Link to="/" className="logo" style={{ fontSize: '2rem' }}>CRUST<span>.</span></Link>
-          <h1 className="auth-title">Forgot Password?</h1>
+          <Link to="/" className="logo" style={{ fontSize: '2rem', color: 'var(--black)', justifyContent: 'center' }}>
+            CRUST<span>.</span><span className="logo-tm" style={{ color: 'var(--black)' }}>TM</span>
+          </Link>
+          <h1 className="auth-title">FORGOT PASSWORD?</h1>
           <p className="auth-subtitle">Enter your email to receive a reset link</p>
         </div>
 
         {sent ? (
           <div style={{ textAlign: 'center' }}>
-            <div style={{ fontSize: '4rem', marginBottom: '1rem' }}>&#9993;</div>
-            <p style={{ color: 'var(--text-secondary)', marginBottom: '2rem' }}>
+            <div style={{ fontSize: '4rem', marginBottom: '1rem' }}>✉</div>
+            <p style={{ color: 'var(--text-secondary)', marginBottom: '2rem', fontWeight: 500 }}>
               If an account exists with <strong>{email}</strong>, you'll receive a password reset link shortly.
             </p>
-            <Link to="/login" className="btn btn-primary">Back to Login</Link>
+            <Link to="/login" className="btn btn-primary">← BACK TO LOGIN</Link>
           </div>
         ) : (
           <form onSubmit={handleSubmit}>
@@ -54,7 +56,7 @@ const ForgotPassword = () => {
             </div>
 
             <button type="submit" className="btn btn-primary btn-lg" style={{ width: '100%' }} disabled={loading}>
-              {loading ? 'Sending...' : 'Send Reset Link'}
+              {loading ? 'SENDING...' : 'SEND RESET LINK'}
             </button>
           </form>
         )}

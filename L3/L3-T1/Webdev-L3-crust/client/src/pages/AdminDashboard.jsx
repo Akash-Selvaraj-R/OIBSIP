@@ -56,7 +56,12 @@ const AdminDashboard = () => {
   };
 
   if (loading) {
-    return <div className="loading-container"><div className="spinner"></div></div>;
+    return (
+      <div className="loading-container">
+        <div className="spinner"></div>
+        <div className="loading-text">Loading dashboard...</div>
+      </div>
+    );
   }
 
   return (
@@ -64,31 +69,34 @@ const AdminDashboard = () => {
       <aside className="admin-sidebar">
         <div style={{ marginBottom: '2rem' }}>
           <h2 className="logo" style={{ fontSize: '1.5rem' }}>CRUST<span>.</span></h2>
-          <p style={{ color: 'var(--text-muted)', fontSize: '0.85rem', marginTop: '0.25rem' }}>Admin Panel</p>
+          <p style={{ color: 'rgba(255,255,255,0.3)', fontSize: '0.7rem', marginTop: '0.25rem', fontFamily: 'var(--font-display)', fontWeight: 600, letterSpacing: '0.08em', textTransform: 'uppercase' }}>
+            Admin Panel
+          </p>
         </div>
 
         <nav className="sidebar-nav">
           <Link to="/admin" className={`sidebar-link ${location.pathname === '/admin' ? 'active' : ''}`}>
-            <span>&#128200;</span> Overview
+            <span>↗</span> Overview
           </Link>
           <Link to="/admin/inventory" className={`sidebar-link ${location.pathname === '/admin/inventory' ? 'active' : ''}`}>
-            <span>&#128230;</span> Inventory
+            <span>☰</span> Inventory
           </Link>
           <Link to="/admin/orders" className={`sidebar-link ${location.pathname === '/admin/orders' ? 'active' : ''}`}>
-            <span>&#128196;</span> Orders
+            <span>≡</span> Orders
           </Link>
         </nav>
 
         <div style={{ marginTop: 'auto' }}>
           <button onClick={() => { logout(); navigate('/admin/login'); }} className="sidebar-link" style={{ width: '100%' }}>
-            <span>&#128682;</span> Logout
+            <span>↪</span> Logout
           </button>
         </div>
       </aside>
 
       <main className="admin-content">
         <div className="page-header">
-          <h1 className="page-title">Dashboard Overview</h1>
+          <div className="brand-stamp red" style={{ marginBottom: '1rem' }}>DASHBOARD</div>
+          <h1 className="page-title">OVERVIEW</h1>
           <p className="page-subtitle">Welcome back, {user?.name}</p>
         </div>
 
@@ -123,8 +131,8 @@ const AdminDashboard = () => {
 
         <div className="table-container">
           <div className="table-header">
-            <span className="table-title">Recent Orders</span>
-            <Link to="/admin/orders" className="btn btn-ghost btn-sm">View All</Link>
+            <span className="table-title">RECENT ORDERS</span>
+            <Link to="/admin/orders" className="btn btn-ghost btn-sm" style={{ color: 'var(--text-secondary)' }}>VIEW ALL →</Link>
           </div>
           <table>
             <thead>
@@ -141,7 +149,7 @@ const AdminDashboard = () => {
                 <tr key={order._id}>
                   <td><span className="order-id">#{order._id.slice(-8).toUpperCase()}</span></td>
                   <td>{order.user?.name || 'N/A'}</td>
-                  <td>₹{order.amount}</td>
+                  <td style={{ fontFamily: 'var(--font-display)', fontWeight: 700 }}>₹{order.amount}</td>
                   <td>
                     <span className={`order-status status-${order.status === 'Order Received' ? 'received' : order.status === 'In Kitchen' ? 'kitchen' : 'delivery'}`}>
                       {order.status}

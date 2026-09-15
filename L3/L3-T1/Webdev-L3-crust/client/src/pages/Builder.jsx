@@ -6,6 +6,14 @@ import toast from 'react-hot-toast';
 
 const STEPS = ['Base', 'Sauce', 'Cheese', 'Veggies', 'Summary'];
 
+const STEP_LABELS = {
+  1: 'BASE',
+  2: 'SAUCE',
+  3: 'CHEESE',
+  4: 'TOPPINGS',
+  5: 'REVIEW',
+};
+
 const Builder = () => {
   const { builder, updateBuilder, toggleVegetable } = usePizza();
   const [inventory, setInventory] = useState({ base: [], sauce: [], cheese: [], vegetable: [] });
@@ -74,12 +82,25 @@ const Builder = () => {
   };
 
   if (loading) {
-    return <div className="loading-container"><div className="spinner"></div></div>;
+    return (
+      <div className="loading-container">
+        <div className="spinner"></div>
+        <div className="loading-text">Loading ingredients...</div>
+      </div>
+    );
   }
 
   return (
     <div className="page-container">
       <div className="builder-container">
+        <div className="builder-header">
+          <h1>
+            BUILD<br />
+            YOUR<br />
+            <span className="step-label">PIZZA</span>
+          </h1>
+        </div>
+
         <div className="progress-bar">
           {STEPS.map((step, i) => (
             <div key={step} className={`progress-step ${builder.step === i + 1 ? 'active' : ''} ${builder.step > i + 1 ? 'completed' : ''}`}>
@@ -91,18 +112,22 @@ const Builder = () => {
 
         {builder.step === 1 && (
           <div className="builder-step fade-in">
-            <h2 className="step-title">Select Your Base</h2>
+            <h2 className="step-title">STEP 01 — BASE</h2>
             <div className="options-grid">
               {inventory.base.map((item) => (
                 <div
                   key={item._id}
                   className={`option-card ${builder.base?._id === item._id ? 'selected' : ''}`}
                   onClick={() => updateBuilder({ base: item })}
+                  role="button"
+                  tabIndex={0}
+                  aria-pressed={builder.base?._id === item._id}
+                  onKeyDown={(e) => e.key === 'Enter' && updateBuilder({ base: item })}
                 >
                   <div className="option-name">{item.name}</div>
                   <div className="option-price">₹{item.price}</div>
-                  <div style={{ fontSize: '0.8rem', color: item.stock > 0 ? 'var(--success)' : 'var(--danger)' }}>
-                    {item.stock > 0 ? 'In Stock' : 'Out of Stock'}
+                  <div style={{ fontSize: '0.75rem', fontFamily: 'var(--font-display)', fontWeight: 700, letterSpacing: '0.04em', textTransform: 'uppercase', marginTop: '0.25rem', color: item.stock > 0 ? 'var(--green)' : 'var(--danger)' }}>
+                    {item.stock > 0 ? '● IN STOCK' : '● OUT OF STOCK'}
                   </div>
                 </div>
               ))}
@@ -112,18 +137,22 @@ const Builder = () => {
 
         {builder.step === 2 && (
           <div className="builder-step fade-in">
-            <h2 className="step-title">Select Your Sauce</h2>
+            <h2 className="step-title">STEP 02 — SAUCE</h2>
             <div className="options-grid">
               {inventory.sauce.map((item) => (
                 <div
                   key={item._id}
                   className={`option-card ${builder.sauce?._id === item._id ? 'selected' : ''}`}
                   onClick={() => updateBuilder({ sauce: item })}
+                  role="button"
+                  tabIndex={0}
+                  aria-pressed={builder.sauce?._id === item._id}
+                  onKeyDown={(e) => e.key === 'Enter' && updateBuilder({ sauce: item })}
                 >
                   <div className="option-name">{item.name}</div>
                   <div className="option-price">₹{item.price}</div>
-                  <div style={{ fontSize: '0.8rem', color: item.stock > 0 ? 'var(--success)' : 'var(--danger)' }}>
-                    {item.stock > 0 ? 'In Stock' : 'Out of Stock'}
+                  <div style={{ fontSize: '0.75rem', fontFamily: 'var(--font-display)', fontWeight: 700, letterSpacing: '0.04em', textTransform: 'uppercase', marginTop: '0.25rem', color: item.stock > 0 ? 'var(--green)' : 'var(--danger)' }}>
+                    {item.stock > 0 ? '● IN STOCK' : '● OUT OF STOCK'}
                   </div>
                 </div>
               ))}
@@ -133,18 +162,22 @@ const Builder = () => {
 
         {builder.step === 3 && (
           <div className="builder-step fade-in">
-            <h2 className="step-title">Select Your Cheese</h2>
+            <h2 className="step-title">STEP 03 — CHEESE</h2>
             <div className="options-grid">
               {inventory.cheese.map((item) => (
                 <div
                   key={item._id}
                   className={`option-card ${builder.cheese?._id === item._id ? 'selected' : ''}`}
                   onClick={() => updateBuilder({ cheese: item })}
+                  role="button"
+                  tabIndex={0}
+                  aria-pressed={builder.cheese?._id === item._id}
+                  onKeyDown={(e) => e.key === 'Enter' && updateBuilder({ cheese: item })}
                 >
                   <div className="option-name">{item.name}</div>
                   <div className="option-price">₹{item.price}</div>
-                  <div style={{ fontSize: '0.8rem', color: item.stock > 0 ? 'var(--success)' : 'var(--danger)' }}>
-                    {item.stock > 0 ? 'In Stock' : 'Out of Stock'}
+                  <div style={{ fontSize: '0.75rem', fontFamily: 'var(--font-display)', fontWeight: 700, letterSpacing: '0.04em', textTransform: 'uppercase', marginTop: '0.25rem', color: item.stock > 0 ? 'var(--green)' : 'var(--danger)' }}>
+                    {item.stock > 0 ? '● IN STOCK' : '● OUT OF STOCK'}
                   </div>
                 </div>
               ))}
@@ -154,18 +187,24 @@ const Builder = () => {
 
         {builder.step === 4 && (
           <div className="builder-step fade-in">
-            <h2 className="step-title">Add Vegetables</h2>
-            <p style={{ color: 'var(--text-secondary)', marginBottom: '1.5rem' }}>Select one or more vegetables</p>
+            <h2 className="step-title">STEP 04 — TOPPINGS</h2>
+            <p style={{ color: 'var(--text-secondary)', marginBottom: '1.5rem', fontFamily: 'var(--font-display)', fontSize: '0.85rem', fontWeight: 600, letterSpacing: '0.04em', textTransform: 'uppercase' }}>
+              SELECT ONE OR MORE
+            </p>
             <div className="veg-options">
               {inventory.vegetable.map((item) => (
                 <div
                   key={item._id}
                   className={`veg-option ${builder.vegetables.includes(item.name) ? 'selected' : ''}`}
                   onClick={() => item.stock > 0 && toggleVegetable(item.name)}
-                  style={{ opacity: item.stock === 0 ? 0.5 : 1, cursor: item.stock === 0 ? 'not-allowed' : 'pointer' }}
+                  role="checkbox"
+                  aria-checked={builder.vegetables.includes(item.name)}
+                  tabIndex={0}
+                  onKeyDown={(e) => e.key === 'Enter' && item.stock > 0 && toggleVegetable(item.name)}
+                  style={{ opacity: item.stock === 0 ? 0.4 : 1, cursor: item.stock === 0 ? 'not-allowed' : 'pointer' }}
                 >
                   <div className="veg-checkbox">
-                    {builder.vegetables.includes(item.name) && <span>&#10003;</span>}
+                    {builder.vegetables.includes(item.name) && <span>✓</span>}
                   </div>
                   <div>
                     <div className="option-name">{item.name}</div>
@@ -179,7 +218,7 @@ const Builder = () => {
 
         {builder.step === 5 && (
           <div className="builder-step fade-in">
-            <h2 className="step-title">Your Custom Pizza</h2>
+            <h2 className="step-title">YOUR CREATION</h2>
             <div className="summary-card">
               <div className="summary-row">
                 <span className="summary-label">Base</span>
@@ -194,7 +233,7 @@ const Builder = () => {
                 <span className="summary-value">{builder.cheese?.name} — ₹{builder.cheese?.price}</span>
               </div>
               <div className="summary-row">
-                <span className="summary-label">Vegetables</span>
+                <span className="summary-label">Toppings</span>
                 <span className="summary-value">
                   {builder.vegetables.map(v => {
                     const veg = inventory.vegetable.find(i => i.name === v);
@@ -203,7 +242,7 @@ const Builder = () => {
                 </span>
               </div>
               <div className="summary-total">
-                <span>Total</span>
+                <span>TOTAL</span>
                 <span className="total-price">₹{getStepPrice()}</span>
               </div>
             </div>
@@ -213,17 +252,17 @@ const Builder = () => {
         <div className="builder-nav">
           {builder.step > 1 && (
             <button className="btn btn-outline" onClick={prevStep}>
-              ← Back
+              ← BACK
             </button>
           )}
           <div style={{ flex: 1 }}></div>
           {builder.step < 5 ? (
             <button className="btn btn-primary btn-lg" onClick={nextStep} disabled={!canProceed()}>
-              Continue →
+              CONTINUE →
             </button>
           ) : (
             <button className="btn btn-primary btn-lg" onClick={handleCheckout}>
-              Proceed to Payment →
+              PROCEED TO PAYMENT →
             </button>
           )}
         </div>

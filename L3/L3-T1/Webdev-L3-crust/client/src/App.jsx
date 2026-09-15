@@ -44,7 +44,7 @@ function App() {
   return (
     <AuthProvider>
       <Router>
-        <Toaster position="top-right" toastOptions={{ duration: 3000, style: { background: '#1e1e1e', color: '#fff', border: '1px solid #333' } }} />
+        <Toaster position="top-right" toastOptions={{ duration: 3000, style: { background: '#1A1A1A', color: '#F5F0E8', border: '2.5px solid #1A1A1A', fontFamily: "'Space Grotesk', sans-serif", fontWeight: 600, fontSize: '0.85rem', letterSpacing: '0.02em' } }} />
         <Routes>
           <Route path="/login" element={<PublicRoute><Login /></PublicRoute>} />
           <Route path="/register" element={<PublicRoute><Register /></PublicRoute>} />

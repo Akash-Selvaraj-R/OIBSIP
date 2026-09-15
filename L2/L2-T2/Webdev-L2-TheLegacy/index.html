@@ -10,11 +10,24 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
+
+  <nav class="nav" role="navigation" aria-label="Main navigation">
+    <a href="#hero" class="nav__brand">THE LEGACY</a>
+    <ul class="nav__links">
+      <li><a href="#intro">01 INTRO</a></li>
+      <li><a href="#early-life">02 LIFE</a></li>
+      <li><a href="#timeline">03 TIMELINE</a></li>
+      <li><a href="#legacy">04 IMPACT</a></li>
+    </ul>
+  </nav>
+
   <header class="hero" id="hero">
-    <div class="hero__overlay"></div>
     <div class="hero__content">
       <span class="hero__label">OASIS INFOBYTE SIP — Level 2 Task 2</span>
-      <h1 class="hero__title">Albert Einstein</h1>
+      <h1 class="hero__title">
+        <span>Albert</span>
+        <span>Einstein</span>
+      </h1>
       <p class="hero__subtitle">The Mind That Redefined Space, Time, and the Universe</p>
       <div class="hero__divider"></div>
     </div>
@@ -24,22 +37,54 @@
       alt="Portrait of Albert Einstein"
       loading="eager"
     >
+    <span class="hero__vertical">ARCHIVE / 01</span>
+    <div class="hero__meta">
+      <div class="hero__meta-item">
+        BORN
+        <span>1879</span>
+      </div>
+      <div class="hero__meta-item">
+        DIED
+        <span>1955</span>
+      </div>
+      <div class="hero__meta-item">
+        FIELD
+        <span>PHYSICS</span>
+      </div>
+    </div>
   </header>
 
   <main>
     <section class="intro" id="intro">
       <div class="container">
-        <span class="section-label">Introduction</span>
-        <p class="intro__text">
-          Few names in the history of science carry the weight and reverence of Albert Einstein. His contributions reshaped our understanding of the physical world, transforming abstract theoretical physics into concepts that continue to drive innovation, technology, and philosophical inquiry more than a century later. The story of his life is not merely one of intellect, but of relentless curiosity and the courage to challenge established thought.
-        </p>
+        <div class="intro__content">
+          <div class="intro__left">
+            <span class="section-label">Introduction</span>
+            <p class="intro__opening">
+              was not simply
+              <em>a figure</em>
+              in history.
+            </p>
+            <p class="intro__meta">
+              BIOGRAPHY / 02<br>
+              EDITORIAL ARCHIVE
+            </p>
+          </div>
+          <div class="intro__right">
+            <p class="intro__text">
+              Few names in the history of science carry the weight and reverence of Albert Einstein. His contributions reshaped our understanding of the physical world, transforming abstract theoretical physics into concepts that continue to drive innovation, technology, and philosophical inquiry more than a century later. The story of his life is not merely one of intellect, but of relentless curiosity and the courage to challenge established thought.
+            </p>
+          </div>
+        </div>
       </div>
     </section>
+
+    <hr class="editorial-rule editorial-rule--thick">
 
     <section class="early-life" id="early-life">
       <div class="container">
         <span class="section-label">Early Life</span>
-        <h2 class="section-title">A Mind Takes Shape</h2>
+        <h2 class="section-title">A Mind Takes<br>Shape</h2>
         <div class="content-columns">
           <div class="content-columns__col">
             <p>
@@ -53,12 +98,18 @@
           </div>
         </div>
       </div>
+      <span class="early-life__number" aria-hidden="true">01</span>
     </section>
 
     <section class="contributions" id="contributions">
       <div class="container">
-        <span class="section-label">Major Contributions</span>
-        <h2 class="section-title">Revolutionizing Physics</h2>
+        <div class="contributions__header">
+          <div>
+            <span class="section-label">Major Contributions</span>
+            <h2 class="section-title">Revolutionizing<br>Physics</h2>
+          </div>
+          <div class="contributions__count" aria-hidden="true">04</div>
+        </div>
         <div class="contributions__grid">
           <article class="contribution-card reveal">
             <span class="contribution-card__number">01</span>
@@ -67,21 +118,21 @@
               Published in 1905, the theory of special relativity fundamentally changed our understanding of space and time. Einstein demonstrated that the laws of physics are the same for all non-accelerating observers and that the speed of light in a vacuum is constant regardless of the observer's motion. The famous equation E=mc² emerged from this work, revealing that mass and energy are interchangeable — a principle that would later underpin nuclear physics.
             </p>
           </article>
-          <article class="contribution-card reveal">
+          <article class="contribution-card reveal reveal-delay-1">
             <span class="contribution-card__number">02</span>
             <h3>General Relativity</h3>
             <p>
               A decade later, Einstein extended his theory to include gravity, presenting general relativity as a geometric theory of gravitation. Rather than viewing gravity as a force between masses, he described it as the curvature of spacetime caused by mass and energy. This theory predicted phenomena that would not be confirmed for years, including the bending of light around massive objects and the existence of gravitational waves, first detected in 2015.
             </p>
           </article>
-          <article class="contribution-card reveal">
+          <article class="contribution-card reveal reveal-delay-2">
             <span class="contribution-card__number">03</span>
             <h3>Photoelectric Effect</h3>
             <p>
               Einstein's explanation of the photoelectric effect — the emission of electrons when light strikes a material — established the quantum nature of light. This work, which earned him the Nobel Prize in Physics in 1921, was pivotal in the development of quantum mechanics, one of the two foundational pillars of modern physics alongside general relativity.
             </p>
           </article>
-          <article class="contribution-card reveal">
+          <article class="contribution-card reveal reveal-delay-3">
             <span class="contribution-card__number">04</span>
             <h3>Brownian Motion</h3>
             <p>
@@ -95,7 +146,7 @@
     <section class="timeline" id="timeline">
       <div class="container">
         <span class="section-label">Timeline</span>
-        <h2 class="section-title">A Life in Milestones</h2>
+        <h2 class="section-title">A Life in<br>Milestones</h2>
         <div class="timeline__track">
           <div class="timeline__line"></div>
 
@@ -103,6 +154,7 @@
             <div class="timeline__marker"></div>
             <div class="timeline__card">
               <span class="timeline__year">1879</span>
+              <span class="timeline__label">Birth</span>
               <p>Born in Ulm, Kingdom of Württemberg, Germany on March 14</p>
             </div>
           </div>
@@ -111,6 +163,7 @@
             <div class="timeline__marker"></div>
             <div class="timeline__card">
               <span class="timeline__year">1895</span>
+              <span class="timeline__label">First Test</span>
               <p>Attempts entrance exam at the Swiss Federal Polytechnic in Zurich; fails the general portion but excels in mathematics and physics</p>
             </div>
           </div>
@@ -119,6 +172,7 @@
             <div class="timeline__marker"></div>
             <div class="timeline__card">
               <span class="timeline__year">1900</span>
+              <span class="timeline__label">Graduation</span>
               <p>Graduates from the Swiss Federal Polytechnic; begins searching for an academic position</p>
             </div>
           </div>
@@ -127,6 +181,7 @@
             <div class="timeline__marker"></div>
             <div class="timeline__card">
               <span class="timeline__year">1902</span>
+              <span class="timeline__label">Patent Office</span>
               <p>Secures a position as a technical assistant examiner at the Swiss Patent Office in Bern</p>
             </div>
           </div>
@@ -134,7 +189,8 @@
           <div class="timeline__item reveal" data-side="left">
             <div class="timeline__marker"></div>
             <div class="timeline__card">
-              <span class="timeline__year">1905 — <em>Annus Mirabilis</em></span>
+              <span class="timeline__year">1905</span>
+              <span class="timeline__label">Annus Mirabilis</span>
               <p>Publishes four groundbreaking papers on the photoelectric effect, Brownian motion, special relativity, and mass-energy equivalence</p>
             </div>
           </div>
@@ -143,6 +199,7 @@
             <div class="timeline__marker"></div>
             <div class="timeline__card">
               <span class="timeline__year">1915</span>
+              <span class="timeline__label">General Relativity</span>
               <p>Completes the general theory of relativity, redefining our understanding of gravity as the curvature of spacetime</p>
             </div>
           </div>
@@ -151,6 +208,7 @@
             <div class="timeline__marker"></div>
             <div class="timeline__card">
               <span class="timeline__year">1919</span>
+              <span class="timeline__label">Fame</span>
               <p>Solar eclipse expedition led by Arthur Eddington confirms the prediction of light bending around the sun, catapulting Einstein to worldwide fame</p>
             </div>
           </div>
@@ -159,6 +217,7 @@
             <div class="timeline__marker"></div>
             <div class="timeline__card">
               <span class="timeline__year">1921</span>
+              <span class="timeline__label">Nobel Prize</span>
               <p>Awarded the Nobel Prize in Physics for his explanation of the photoelectric effect</p>
             </div>
           </div>
@@ -167,6 +226,7 @@
             <div class="timeline__marker"></div>
             <div class="timeline__card">
               <span class="timeline__year">1933</span>
+              <span class="timeline__label">Emigration</span>
               <p>Emigrates to the United States to escape the rise of Nazism; accepts a position at the Institute for Advanced Study in Princeton, New Jersey</p>
             </div>
           </div>
@@ -175,6 +235,7 @@
             <div class="timeline__marker"></div>
             <div class="timeline__card">
               <span class="timeline__year">1939</span>
+              <span class="timeline__label">The Letter</span>
               <p>Writes letter to President Franklin D. Roosevelt warning of the potential development of nuclear weapons, a decision that haunted him for the rest of his life</p>
             </div>
           </div>
@@ -183,6 +244,7 @@
             <div class="timeline__marker"></div>
             <div class="timeline__card">
               <span class="timeline__year">1955</span>
+              <span class="timeline__label">End of Era</span>
               <p>Passes away on April 18 in Princeton, New Jersey, leaving behind an unmatched intellectual legacy</p>
             </div>
           </div>
@@ -191,20 +253,29 @@
     </section>
 
     <section class="quote" id="quote">
-      <div class="container">
-        <blockquote class="quote__block reveal">
-          <p class="quote__text">
-            "Imagination is more important than knowledge. For knowledge is limited, whereas imagination embraces the entire world, stimulating progress, giving birth to evolution."
-          </p>
-          <cite class="quote__source">— Albert Einstein</cite>
-        </blockquote>
-      </div>
+      <blockquote class="quote__block reveal">
+        <span class="quote__mark" aria-hidden="true">"</span>
+        <p class="quote__text">
+          Imagination is more important than knowledge. For knowledge is limited, whereas imagination embraces the entire world, stimulating progress, giving birth to evolution.
+        </p>
+        <cite class="quote__source">— Albert Einstein</cite>
+      </blockquote>
     </section>
 
     <section class="legacy" id="legacy">
       <div class="container">
-        <span class="section-label">Legacy</span>
-        <h2 class="section-title">An Enduring Influence</h2>
+        <div class="legacy__header">
+          <span class="section-label">Legacy</span>
+          <div class="legacy__big-text">
+            What<br>
+            <em>Remains?</em>
+          </div>
+          <div class="legacy__keywords">
+            <span class="legacy__keyword">IDEAS</span>
+            <span class="legacy__keyword">INFLUENCE</span>
+            <span class="legacy__keyword">IMPACT</span>
+          </div>
+        </div>
         <div class="content-columns">
           <div class="content-columns__col">
             <p>
@@ -218,16 +289,29 @@
           </div>
         </div>
       </div>
+      <span class="legacy__number" aria-hidden="true">04</span>
     </section>
   </main>
 
   <footer class="footer">
     <div class="container">
-      <p class="footer__text">
-        <strong>The Legacy</strong> — OASIS INFOBYTE SIP &middot; Web Development & Designing &middot; Level 2 Task 2
+      <p class="footer__statement">
+        A LIFE ENDS.<br>
+        <em>AN IMPACT DOESN'T.</em>
       </p>
-      <p class="footer__credit">
-        Image: <a href="https://commons.wikimedia.org/wiki/File:Albert_Einstein_Head.jpg" target="_blank" rel="noopener noreferrer">Wikimedia Commons</a> &middot; Public Domain
+      <div class="footer__end">
+        <div class="footer__brand">THE LEGACY</div>
+        <div class="footer__info">
+          <p class="footer__text">
+            OASIS INFOBYTE SIP &middot; Web Development & Designing &middot; Level 2 Task 2
+          </p>
+          <p class="footer__credit">
+            Image: <a href="https://commons.wikimedia.org/wiki/File:Albert_Einstein_Head.jpg" target="_blank" rel="noopener noreferrer">Wikimedia Commons</a> &middot; Public Domain
+          </p>
+        </div>
+      </div>
+      <p class="footer__text" style="margin-top: 2rem; text-align: center; letter-spacing: 0.3em; font-size: 0.6rem; color: var(--color-muted);">
+        END OF DOCUMENT
       </p>
     </div>
   </footer>

@@ -34,9 +34,11 @@ const ResetPassword = () => {
     return (
       <div className="auth-container">
         <div className="auth-card fade-in" style={{ textAlign: 'center' }}>
-          <h2>Invalid Reset Link</h2>
+          <h2 style={{ fontFamily: 'var(--font-display)', fontWeight: 700, textTransform: 'uppercase', marginBottom: '0.5rem' }}>
+            INVALID RESET LINK
+          </h2>
           <p style={{ color: 'var(--text-secondary)', margin: '1rem 0' }}>This password reset link is invalid.</p>
-          <Link to="/forgot-password" className="btn btn-primary">Request New Link</Link>
+          <Link to="/forgot-password" className="btn btn-primary">REQUEST NEW LINK</Link>
         </div>
       </div>
     );
@@ -46,15 +48,19 @@ const ResetPassword = () => {
     <div className="auth-container">
       <div className="auth-card fade-in">
         <div className="auth-header">
-          <Link to="/" className="logo" style={{ fontSize: '2rem' }}>CRUST<span>.</span></Link>
-          <h1 className="auth-title">Reset Password</h1>
+          <Link to="/" className="logo" style={{ fontSize: '2rem', color: 'var(--black)', justifyContent: 'center' }}>
+            CRUST<span>.</span><span className="logo-tm" style={{ color: 'var(--black)' }}>TM</span>
+          </Link>
+          <h1 className="auth-title">RESET PASSWORD</h1>
           <p className="auth-subtitle">Enter your new password</p>
         </div>
 
         {success ? (
           <div style={{ textAlign: 'center' }}>
-            <div style={{ fontSize: '4rem', marginBottom: '1rem', color: 'var(--success)' }}>&#10003;</div>
-            <p style={{ color: 'var(--text-secondary)' }}>Redirecting to login...</p>
+            <div style={{ fontSize: '4rem', marginBottom: '1rem', color: 'var(--green)' }}>✓</div>
+            <p style={{ color: 'var(--text-secondary)', fontFamily: 'var(--font-display)', fontWeight: 700, letterSpacing: '0.06em', textTransform: 'uppercase' }}>
+              REDIRECTING TO LOGIN...
+            </p>
           </div>
         ) : (
           <form onSubmit={handleSubmit}>
@@ -84,7 +90,7 @@ const ResetPassword = () => {
             </div>
 
             <button type="submit" className="btn btn-primary btn-lg" style={{ width: '100%' }} disabled={loading}>
-              {loading ? 'Resetting...' : 'Reset Password'}
+              {loading ? 'RESETTING...' : 'RESET PASSWORD'}
             </button>
           </form>
         )}
