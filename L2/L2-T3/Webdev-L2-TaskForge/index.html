@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TASKFORGE — Personal Task Command Center</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1 class="logo">TASKFORGE</h1>
+            <p class="tagline">Personal Task Command Center</p>
+        </header>
+
+        <section class="input-section" aria-label="Add a new task">
+            <form id="task-form" class="task-form">
+                <label for="task-input" class="visually-hidden">What needs to be done?</label>
+                <input
+                    type="text"
+                    id="task-input"
+                    class="task-input"
+                    placeholder="What needs to be done?"
+                    autocomplete="off"
+                    required
+                >
+                <button type="submit" class="btn btn-add" aria-label="Add task">Add Task</button>
+            </form>
+        </section>
+
+        <div class="divider"></div>
+
+        <section class="tasks-section" aria-label="Pending tasks">
+            <div class="section-header">
+                <h2 class="section-title">PENDING</h2>
+                <span id="pending-count" class="task-count">0 tasks</span>
+            </div>
+            <ul id="pending-list" class="task-list" aria-live="polite"></ul>
+            <div id="pending-empty" class="empty-state">
+                <p>No pending tasks. You're all caught up.</p>
+            </div>
+        </section>
+
+        <div class="divider"></div>
+
+        <section class="tasks-section" aria-label="Completed tasks">
+            <div class="section-header">
+                <h2 class="section-title">COMPLETED</h2>
+                <span id="completed-count" class="task-count">0 tasks</span>
+            </div>
+            <ul id="completed-list" class="task-list" aria-live="polite"></ul>
+            <div id="completed-empty" class="empty-state">
+                <p>No completed tasks yet.</p>
+            </div>
+        </section>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

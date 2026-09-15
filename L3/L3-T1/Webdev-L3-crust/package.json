@@ -1,0 +1,15 @@
+{
+  "name": "crust",
+  "version": "1.0.0",
+  "description": "CRUST - Pizza Delivery Full-Stack Application",
+  "scripts": {
+    "server": "cd server && npm run dev",
+    "client": "cd client && npm run dev",
+    "install:all": "cd server && npm install && cd ../client && npm install",
+    "seed": "cd server && npm run seed",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "build": "cd client && npm run build"
+  },
+  "keywords": ["pizza", "delivery", "fullstack", "react", "node", "mongodb"],
+  "license": "MIT"
+}

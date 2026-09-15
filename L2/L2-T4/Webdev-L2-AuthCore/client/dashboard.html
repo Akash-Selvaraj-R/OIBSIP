@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AUTHCORE — Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="dashboard-container">
+    <nav class="navbar">
+      <div class="logo">AUTHCORE</div>
+      <button class="btn-logout" id="logoutBtn">Logout</button>
+    </nav>
+    <main class="dashboard-main">
+      <div class="dashboard-card">
+        <div class="welcome-section">
+          <h1 id="welcomeMessage">Welcome back</h1>
+          <p class="dashboard-subtitle">Authenticated Dashboard</p>
+        </div>
+        <div class="info-grid">
+          <div class="info-card">
+            <div class="info-label">Account</div>
+            <div class="info-value" id="accountInfo">—</div>
+          </div>
+          <div class="info-card">
+            <div class="info-label">Security</div>
+            <div class="info-value" id="securityInfo">Password protected</div>
+          </div>
+          <div class="info-card">
+            <div class="info-label">Session Status</div>
+            <div class="info-value session-active" id="sessionStatus">Active</div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+  <script src="script.js"></script>
+  <script>
+    (async function() {
+      try {
+        const res = await fetch('/api/auth/me');
+        if (!res.ok) {
+          window.location.href = '/';
+          return;
+        }
+        const data = await res.json();
+        document.getElementById('welcomeMessage').textContent = `Welcome back, ${data.user.username}`;
+        document.getElementById('accountInfo').textContent = data.user.email;
+        const created = new Date(data.user.created_at);
+        document.getElementById('securityInfo').textContent = `Member since ${created.toLocaleDateString()}`;
+      } catch (err) {
+        window.location.href = '/';
+      }
+    })();
+
+    document.getElementById('logoutBtn').addEventListener('click', async function() {
+      try {
+        await fetch('/api/auth/logout', { method: 'POST' });
+      } catch (err) {
+        // ignore
+      }
+      window.location.href = '/';
+    });
+  </script>
+</body>
+</html>

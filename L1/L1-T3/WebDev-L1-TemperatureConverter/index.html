@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="THERMA - A clean temperature utility that converts values between Celsius, Fahrenheit, and Kelvin.">
+    <title>THERMA — Temperature Converter</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="header">
+        <div class="header__brand">
+            <h1 class="header__logo">THERMA</h1>
+            <p class="header__tagline">Temperature, simplified.</p>
+        </div>
+        <p class="header__description">Convert temperatures instantly across Celsius, Fahrenheit, and Kelvin.</p>
+    </header>
+
+    <main class="main">
+        <section class="converter" aria-label="Temperature Converter">
+            <div class="converter__card">
+                <div class="converter__input-group">
+                    <label for="temperatureInput" class="converter__label">Temperature</label>
+                    <input 
+                        type="number" 
+                        id="temperatureInput" 
+                        class="converter__input" 
+                        placeholder="Enter a temperature"
+                        inputmode="decimal"
+                        autocomplete="off"
+                        aria-describedby="errorMessage"
+                    >
+                </div>
+
+                <div class="converter__select-group">
+                    <label for="unitSelect" class="converter__label">Convert from</label>
+                    <select id="unitSelect" class="converter__select">
+                        <option value="celsius">Celsius (°C)</option>
+                        <option value="fahrenheit">Fahrenheit (°F)</option>
+                        <option value="kelvin">Kelvin (K)</option>
+                    </select>
+                </div>
+
+                <button type="button" id="convertBtn" class="converter__button">Convert Temperature</button>
+
+                <div id="errorMessage" class="converter__error" aria-live="polite" role="alert"></div>
+
+                <div id="resultsSection" class="converter__results" aria-live="polite">
+                    <p class="converter__placeholder">Enter a temperature to see the conversion.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>OASIS INFOBYTE — Web Development &amp; Designing — Level 1 Task 3</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
